@@ -20,7 +20,6 @@ const Stop = (props) => (
     {({ loading, error, data }) => {
       if (loading) return <p>Loading...</p>
       if (error) return <p>Error :(</p>
-      console.log(data)
 
       let v = null
       if (data.departures && 
@@ -57,7 +56,8 @@ class Departures extends React.Component {
 
   render() {
     return (<div>
-      <h1>Station: </h1>
+      <h1>Station: Footscray</h1>
+      <p></p>
       <Stop stop_id={this.props.stop_id}/>
     </div>)
   }

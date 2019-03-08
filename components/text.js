@@ -5,7 +5,6 @@ export const H1 = styled.h1`
   text-align: center;
   max-width: 20em;
   font-family: 'Poppins', sans-serif;
-  color: white;
   font-size: 2.25em;
   color: white;
 
@@ -21,7 +20,6 @@ export const H2 = styled.h2`
   font-family: 'Poppins', sans-serif;
   color: white;
   font-size: 1.25em;
-  color: white;
 
   @media screen and (min-width: 48em) {
     font-size: 2.25em;
