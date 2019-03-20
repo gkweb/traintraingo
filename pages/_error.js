@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import NextSeo from 'next-seo'
-import {Main, PageContainer} from './../components/layout'
+import Main from './../components/main'
+import {PageContainer} from './../components/layout'
 import {P as Blurb, H1 as Title} from './../components/text'
 
 export default class Error extends React.Component {

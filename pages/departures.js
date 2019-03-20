@@ -1,49 +1,61 @@
 import React, {Component} from 'react'
-import { Query } from "react-apollo"
-import gql from "graphql-tag"
+import styled from 'styled-components'
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
+import Header from './../components/header'
+import Main from './../components/main'
+import Logo from './../components/logo-no-text'
+import { PageContainer } from './../components/layout'
 
-const Stop = (props) => (
-  <Query
-    query={gql`
-    {
-      departures(stop_id: ${props.stop_id})  {
-        departures {
-          stop_id
-          estimated_departure_utc
-          scheduled_departure_utc
-          platform_number
-        }
-      }
-    }
-    `}
-  >
-    {({ loading, error, data }) => {
-      if (loading) return <p>Loading...</p>
-      if (error) return <p>Error :(</p>
+// const Stop = (props) => (
+//   <Query
+//     query={gql`
+//     {
+//       stop(stop_id: ${props.stop_id}) {
+//         stop_id
+//         stop_name
+//         departures {
+//           stop_id
+//           platform_number
+//           estimated_departure_utc
+//           scheduled_departure_utc
+//         }
+//       }
+//     }
+//     `}
+//   >
+//     {({ loading, error, data }) => {
+//       if (loading) return <p>Loading...</p>
+//       if (error) return <p>Error :(</p>
 
-      let v = null
-      if (data.departures && 
-        ((data.departures.departures || []).length > 0)
-      ) {
-        v = data.departures.departures.map((departure, index) => {
-          const scheduled_dep = new Date(departure.scheduled_departure_utc)
-          const estimated_dep = new Date(departure.estimated_departure_utc)
-          return (
-            <div key={index}>
-            <div>
-              <li>Plat:{departure.platform_number}  {scheduled_dep.getHours()}:{scheduled_dep.getMinutes()}:{scheduled_dep.getSeconds()}</li>
-            </div>
-          </div>
-          )
-        })
-      } else {
-        v = <div>Nothing found</div>
-      }
+//       let v = null
+//       if (data.departures && 
+//         (data.departures.length > 0))
+//         {
+//         v = data.departures.map((departure, index) => {
+//           const scheduled_dep = new Date(departure.scheduled_departure_utc)
+//           const estimated_dep = new Date(departure.estimated_departure_utc)
+//           return (
+//             <div key={index}>
+//             <div>
+//               <li>{departure.stop_name} Plat:{departure.platform_number}  {scheduled_dep.getHours()}:{scheduled_dep.getMinutes()}:{scheduled_dep.getSeconds()}</li>
+//             </div>
+//           </div>
+//           )
+//         })
+//       } else {
+//         v = <div>Nothing found</div>
+//       }
 
-      return v
-    }}
-  </Query>
-);
+//       return (
+//         <Main>
+//         <Header headerTitle={data.stop_name} />
+//           {v}
+//         </Main>
+//       )
+//     }}
+//   </Query>
+// );
 
 class Departures extends React.Component {
   static async getInitialProps({query}) {
@@ -55,11 +67,10 @@ class Departures extends React.Component {
   }
 
   render() {
-    return (<div>
-      <h1>Station: Footscray</h1>
-      <p></p>
-      <Stop stop_id={this.props.stop_id}/>
-    </div>)
+    return (
+      <h1>Blah</h1>
+    // <Stop stop_id={this.props.stop_id}></Stop>
+    )
   }
 }
 

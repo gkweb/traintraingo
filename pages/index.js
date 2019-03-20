@@ -4,7 +4,9 @@ import { Query } from "react-apollo"
 import gql from "graphql-tag"
 import Link from 'next/link'
 import debounce from 'lodash/debounce'
-import {Main as MainElem, PageContainer} from './../components/layout'
+import {PageContainer} from './../components/layout'
+import Main from './../components/main'
+import Logo from './../components/logo'
 import { ButtonElem } from './../components/button'
 import {P as Blurb, H1 as Title} from './../components/text'
 
@@ -34,10 +36,25 @@ const SearchInput = styled.input`
   box-sizing: border-box;
   width: 100%;
   padding: 1em;
+  background-color: #222;
+  border: 1px solid #111;
+  color: white;
+  border-radius: .25em;
+  font-size: 1.1em;
+
+  &:focus {
+    outline: 0;
+  }
 `
 
-const Main = styled(MainElem)`
-  background: linear-gradient(to bottom, #1F79C3, #3890D2);
+const DescriptionElem = styled.p`
+  color: white;
+  text-align: center;
+`
+
+const LogoContainer = styled.div`
+  margin: 0 auto 2em;
+  max-width: 15em;
 `
 
 const FormElem = styled.form`
@@ -90,10 +107,13 @@ export default class App extends React.Component {
       }}
       />
       <Main>
-        <Title>Find train station</Title>
+      <LogoContainer>
+        <Logo />
+      </LogoContainer>
         <ContentElem>
           <Search onSubmit={event => (event.preventDefault())} onChange={this.handleSearch} initialRun={this.state.initialRun}/>
           <Stops search_term={this.state.search} />
+          <DescriptionElem>Melbourne, Australia train times with no bloat. Search, Select, then View departures.</DescriptionElem>
         </ContentElem>
       </Main>
     </PageContainer>
@@ -106,33 +126,25 @@ const Stops = (props) => (
     query={gql`
     {
       stops(search_term: "${props.search_term}") {
-        stops {
-          stop_id
-          stop_name
-          departures {
-            stop_id
-            platform_number
-            estimated_departure_utc
-            scheduled_departure_utc
-          }
-        }
+        stop_id
+        stop_name
       }
     }
     `}
   >
     {({ loading, error, data }) => {
+      if (loading) return <p>Loading...</p>
+      if (error) return <p>Error :(</p>
       if (props.initialRun) return null
       if (props.search_term && props.search_term.length < 3) return null
       if (!data.stops) return null
-      if (data.stops && data.stops.stops.length <= 0) return null
-      if (loading) return <p>Loading...</p>
-      if (error) return <p>Error :(</p>
+      if (data.stops && data.stops.length <= 0) return null
 
       let v = null
       if (data.stops &&
-        (((data.stops.stops || []).length > 0) && 
-        typeof (data.stops || {}).stops === "object")) {
-        v = data.stops.stops.map((stop, index) => (
+        (((data.stops || []).length > 0) && 
+        typeof data.stops === "object")) {
+        v = data.stops.map((stop, index) => (
           <StopButton key={index} href={`/departures/${stop.stop_id}`}>{stop.stop_name}</StopButton>
         ));
       } else {
