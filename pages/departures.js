@@ -69,11 +69,9 @@ const Stop = (props) => (
           v = (
           <DepartureUlElem>
             {data.stop.departures.map((departure, index) => {
-            const scheduled_dep = new Date(departure.scheduled_departure_utc)
-            const estimated_dep = new Date(departure.estimated_departure_utc)
             return (
               <DepartureItemElem key={index}>
-                <Departure directionName={departure.direction_name} platformNumber={departure.platform_number} scheduledDep={`${scheduled_dep.getHours()}:${scheduled_dep.getMinutes()}:${scheduled_dep.getSeconds()}`} />
+                <Departure directionName={departure.direction_name} platformNumber={departure.platform_number} scheduledDep={departure.scheduled_departure_utc} estimatedDep={departure.estimated_departure_utc} />
               </DepartureItemElem>
             )
             })}

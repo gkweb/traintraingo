@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Logo from './../components/logo-no-text'
+import Save from './../components/save'
 
 const HeaderElem = styled.header`
   display: flex;
@@ -25,6 +26,7 @@ const Header = ({headerTitle}) => (
       <Logo />
     </LogoContainer>
     {headerTitle ? <TitleElem>{headerTitle}</TitleElem> : null}
+    <Save isSaved={true}/>
   </HeaderElem>
 )
 
