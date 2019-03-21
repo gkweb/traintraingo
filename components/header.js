@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import Logo from './../components/logo-no-text'
 import Save from './../components/save'
+import Link from 'next/link'
 
 const HeaderElem = styled.header`
   display: flex;
@@ -22,9 +23,13 @@ const LogoContainer = styled.div`
 
 const Header = ({headerTitle}) => (
   <HeaderElem>
-    <LogoContainer>
-      <Logo />
-    </LogoContainer>
+    <Link href={'/'}>
+      <a>
+        <LogoContainer>
+          <Logo />
+        </LogoContainer>
+      </a>
+    </Link>
     {headerTitle ? <TitleElem>{headerTitle}</TitleElem> : null}
     <Save isSaved={true}/>
   </HeaderElem>

@@ -7,6 +7,7 @@ import Main from './../components/main'
 import Logo from './../components/logo-no-text'
 import { PageContainer } from './../components/layout'
 import Departure from './../components/departure'
+import Footer from './../components/footer'
 
 const DepartureUlElem = styled.ul`
   display: flex;
@@ -85,6 +86,7 @@ const Stop = (props) => (
         <Main>
         <Header headerTitle={stop_name} />
           {v}
+        <Footer/>
         </Main>
       )
     }}
