@@ -102,8 +102,8 @@ export default class App extends React.Component {
     <PageContainer>
       <NextSeo
       config={{
-        title: '==== >',
-        description: '[][][]'
+        title: 'Train Train Go - Train departures without the bloat.',
+        description: 'Train train go'
       }}
       />
       <Main>

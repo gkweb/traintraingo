@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import styled from 'styled-components'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
+import NextSeo from 'next-seo'
 import Header from './../components/header'
 import Main from './../components/main'
 import Logo from './../components/logo-no-text'
@@ -12,11 +13,12 @@ import Footer from './../components/footer'
 const DepartureUlElem = styled.ul`
   display: flex;
   flex-flow: row wrap;
-  margin: 0;
+  margin: 4em 0 0;
   padding: 0;
   width: 100%;
 
   @media screen and  (min-width: 50em) {
+    margin: 6.625em 0 0;
     justify-content: space-between;
   }
 `
@@ -83,11 +85,19 @@ const Stop = (props) => (
       }
 
       return (
+        <>
+        <NextSeo
+          config={{
+            title: `${stop_name} - Train train Go`,
+            description: stop_name
+          }}
+        />
         <Main>
-        <Header headerTitle={stop_name} />
+        <Header headerTitle={stop_name} stopId={(error ? null : props.stop_id)}/>
           {v}
         <Footer/>
         </Main>
+        </>
       )
     }}
   </Query>
