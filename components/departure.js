@@ -15,12 +15,17 @@ const InfoElem = styled.p`
   margin: 0 0 1em;
 `
 
+const DepartingTimeElem = styled.p`
+  font-size: 2em;
+  margin: 0 0 1em;
+`
+
 const Departure = ({lineName, directionName, platformNumber, scheduledDep}) => (
   <ContainerElem>
-    <TitleElem>{lineName} Line</TitleElem>
-    <InfoElem>To {directionName}</InfoElem>
+    <TitleElem>To {directionName}</TitleElem>
+    {lineName ?<InfoElem>Line: {lineName}</InfoElem> : null}
     <InfoElem>Platform {platformNumber}</InfoElem>
-    <InfoElem>Departing: {scheduledDep}</InfoElem>
+    <DepartingTimeElem>Departing: {scheduledDep}</DepartingTimeElem>
   </ContainerElem>
 )
 
