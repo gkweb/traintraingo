@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Logo from './../components/logo-no-text'
 import Save from './../components/save'
 import Link from 'next/link'
+import { updateItem, removeItem, getItem } from './../helpers/localStorage'
 
 const HeaderElem = styled.header`
   display: flex;
@@ -41,18 +42,58 @@ const LogoContainer = styled.div`
   }
 `
 
-const Header = ({headerTitle, stopId}) => (
-  <HeaderElem>
-    <Link href={'/'}>
-      <a>
-        <LogoContainer>
-          <Logo />
-        </LogoContainer>
-      </a>
-    </Link>
-    {headerTitle ? <TitleElem>{headerTitle}</TitleElem> : null}
-    {stopId ? <Save isSaved={false}/> : null }
-  </HeaderElem>
-)
+class Header extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      isSaved: false
+    }
+
+    this.handleSave = this.handleSave.bind(this)
+  }
+
+  handleSave(event) {
+    this.setState({
+      isSaved: !this.state.isSaved
+    })
+
+    if (this.state.isSaved) {
+      // remove
+      removeItem(this.props.stopId)
+    } else {
+      // save
+      updateItem(this.props.stopId, this.props.headerTitle)
+    }
+  }
+
+  componentDidMount() {
+    const isSaved = (getItem(this.props.stopId))
+
+    this.setState({
+      isSaved: isSaved
+    })
+  }
+
+  render() {
+    const {
+      headerTitle,
+      stopId
+    } = this.props
+
+    return (
+      <HeaderElem>
+      <Link href={'/'}>
+        <a>
+          <LogoContainer>
+            <Logo />
+          </LogoContainer>
+        </a>
+      </Link>
+      {headerTitle ? <TitleElem>{headerTitle}</TitleElem> : null}
+      {stopId ? <Save isSaved={this.state.isSaved} handler={this.handleSave} /> : null }
+    </HeaderElem>
+    )
+  }
+}
 
 export default Header

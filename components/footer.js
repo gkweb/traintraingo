@@ -21,7 +21,7 @@ const LinkElem = styled.a`
 const Footer = () => (
   <FooterElem>
     <p>Data supplied by ptv (Public Transport Victoria). Obtain your API Access <LinkElem href="https://www.data.vic.gov.au/data/dataset/ptv-timetable-api">here</LinkElem></p>
-    <LinkElem href="https://gladekettle.com.au">Created by gkweb</LinkElem>
+    <LinkElem href="https://gladekettle.com.au" target="_blank">Created by gkweb</LinkElem>
   </FooterElem>
 )
 
