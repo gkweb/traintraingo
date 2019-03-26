@@ -8,8 +8,8 @@ const ContainerElem = styled.div`
 
 const NoticeElem = styled.svg`
   display: block;
-  width: 1em;
-  height: 1em;
+  width: 1.25em;
+  height: 1.25em;
   margin-right: .25em;
   fill: #ffB86f;
 `
@@ -42,16 +42,23 @@ const DisruptionListElem = styled.ul`
   list-style: none;
 `
 const DisruptionItemElem = styled.li`
-  
+  margin-bottom: 1em;
 `
 
 const DisruptionTitleElem = styled.span`
-  display: block;  
+  display: block;
+  margin-bottom: .5em;
   font-weight: bold;
 `
 
 const DisruptionDescElem = styled.span`
   display: block;
+  margin-bottom: .5em;
+`
+
+const DisruptionReadMoreElem = styled.a`
+  display: block;
+  color: white;
 `
 
 class Disruption extends React.Component {
@@ -70,28 +77,38 @@ class Disruption extends React.Component {
   }
 
   render() {
-    return (
-      <ContainerElem>
+    let d = null
+    let content = null
+
+    if (this.props.disruptionData && this.props.disruptionData.length > 0) {
+      if (this.state.visible) {
+        content = <ContentElem>
+          <DisruptionListElem>
+          {this.props.disruptionData.map((val, index) => (
+            <DisruptionItemElem key={index}>
+              <DisruptionTitleElem>{val.title}</DisruptionTitleElem>
+              <DisruptionDescElem>{val.description}
+                {val.url ? <DisruptionReadMoreElem href={val.url} colour={val.colour}>Read more</DisruptionReadMoreElem> : null}
+              </DisruptionDescElem>
+            </DisruptionItemElem>
+            )
+          )}
+          </DisruptionListElem>
+        </ContentElem>
+      }
+
+      d = <ContainerElem>
       <TitleElem onClick={this.handleClick}>
         <NoticeElem viewBox="0 0 32 32">
           <path d="M15.5 3c-7.456 0-13.5 6.044-13.5 13.5s6.044 13.5 13.5 13.5 13.5-6.044 13.5-13.5-6.044-13.5-13.5-13.5zM15.5 27c-5.799 0-10.5-4.701-10.5-10.5s4.701-10.5 10.5-10.5 10.5 4.701 10.5 10.5-4.701 10.5-10.5 10.5zM15.5 10c-0.828 0-1.5 0.671-1.5 1.5v5.062c0 0.828 0.672 1.5 1.5 1.5s1.5-0.672 1.5-1.5v-5.062c0-0.829-0.672-1.5-1.5-1.5zM15.5 20c-0.828 0-1.5 0.672-1.5 1.5s0.672 1.5 1.5 1.5 1.5-0.672 1.5-1.5-0.672-1.5-1.5-1.5z"></path>
         </NoticeElem>
         <TitleTextElem>Possible disruption</TitleTextElem>
       </TitleElem>
-      {this.state.visible ? <ContentElem>
-        <DisruptionListElem>
-          <DisruptionItemElem>
-            <DisruptionTitleElem>
-              PTV is out of money
-            </DisruptionTitleElem>
-            <DisruptionDescElem>
-              Blah blah disruption
-            </DisruptionDescElem>
-          </DisruptionItemElem>
-        </DisruptionListElem>
-      </ContentElem> : null}
+      {content}
     </ContainerElem>
-  )
+    }
+
+    return d
   }
 }
 

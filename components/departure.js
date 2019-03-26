@@ -36,7 +36,7 @@ const PlatformElem = styled.p`
   }
 `
 
-const Departure = ({lineName, directionName, platformNumber, scheduledDep, estimatedDep}) => {
+const Departure = ({lineName, directionName, platformNumber, scheduledDep, estimatedDep, disruptions}) => {
   const scheduled = moment(scheduledDep).format('HH:mm')
   const estimated = estimatedDep ? moment(estimatedDep).fromNow() : '-' // Estimates into the future are null
 
@@ -46,7 +46,7 @@ const Departure = ({lineName, directionName, platformNumber, scheduledDep, estim
     {lineName ?<InfoElem>Line: {lineName}</InfoElem> : null}
     <DepartingTimeElem>{estimated}</DepartingTimeElem>
     <PlatformElem>Platform: {platformNumber ? platformNumber : '-'}</PlatformElem>
-    <Disruption/>
+    <Disruption disruptionData={disruptions}/>
   </ContainerElem>
   )
 }

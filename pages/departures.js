@@ -20,6 +20,7 @@ const DepartureUlElem = styled.ul`
   @media screen and  (min-width: 50em) {
     margin: 6.625em 0 0;
     justify-content: space-between;
+    align-items: flex-start;
   }
 `
 
@@ -49,6 +50,13 @@ const Stop = (props) => (
           estimated_departure_utc
           scheduled_departure_utc
           direction_name
+          disruptions {
+            title
+            description
+            url
+            display_status
+            colour
+          }
         }
       }
     }
@@ -74,7 +82,7 @@ const Stop = (props) => (
             {data.stop.departures.map((departure, index) => {
             return (
               <DepartureItemElem key={index}>
-                <Departure directionName={departure.direction_name} platformNumber={departure.platform_number} scheduledDep={departure.scheduled_departure_utc} estimatedDep={departure.estimated_departure_utc} />
+                <Departure directionName={departure.direction_name} platformNumber={departure.platform_number} scheduledDep={departure.scheduled_departure_utc} estimatedDep={departure.estimated_departure_utc} disruptions={departure.disruptions}/>
               </DepartureItemElem>
             )
             })}
