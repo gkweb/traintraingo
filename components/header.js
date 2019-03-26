@@ -82,7 +82,7 @@ class Header extends React.Component {
 
     return (
       <HeaderElem>
-      <Link href={'/'}>
+      <Link href={'/'} passHref prefetch>
         <a>
           <LogoContainer>
             <Logo />

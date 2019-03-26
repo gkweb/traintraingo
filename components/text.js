@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const H1 = styled.h1`
   margin: 1rem auto;
-  text-align: center;
   max-width: 20em;
   font-family: 'Poppins', sans-serif;
   font-size: 2.25em;
@@ -14,8 +13,7 @@ export const H1 = styled.h1`
 `
 
 export const H2 = styled.h2`
-  margin: 1rem auto;
-  text-align: center;
+  margin: 1rem 0;
   max-width: 20em;
   font-family: 'Poppins', sans-serif;
   color: white;
@@ -23,6 +21,18 @@ export const H2 = styled.h2`
 
   @media screen and (min-width: 48em) {
     font-size: 2.25em;
+  }
+`
+
+export const H3 = styled.h3`
+  margin: 1rem 0;
+  max-width: 20em;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  font-size: 1.25em;
+
+  @media screen and (min-width: 48em) {
+    font-size: 1.85em;
   }
 `
 

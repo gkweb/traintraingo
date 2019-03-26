@@ -7,6 +7,7 @@ import debounce from 'lodash/debounce'
 import {PageContainer} from './../components/layout'
 import Main from './../components/main'
 import Logo from './../components/logo'
+import Favourites from './../components/favourites'
 import { ButtonElem } from './../components/button'
 import {P as Blurb, H1 as Title} from './../components/text'
 
@@ -115,6 +116,7 @@ export default class App extends React.Component {
           <Stops search_term={this.state.search} />
           <DescriptionElem>Melbourne, Australia train times with no bloat. Search, Select, then View departures.</DescriptionElem>
         </ContentElem>
+        <Favourites />
       </Main>
     </PageContainer>
     )
@@ -133,10 +135,10 @@ const Stops = (props) => (
     `}
   >
     {({ loading, error, data }) => {
-      if (loading) return <p>Loading...</p>
       if (error) return <p>Error :(</p>
-      if (props.initialRun) return null
       if (props.search_term && props.search_term.length < 3) return null
+      if (props.initialRun) return null
+      if (loading) return <p>Loading...</p>
       if (!data.stops) return null
       if (data.stops && data.stops.length <= 0) return null
 

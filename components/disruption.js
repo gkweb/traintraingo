@@ -24,6 +24,7 @@ const TitleElem = styled.button`
   font-weight: bold;
   font-family:'Lustria', serif;
   color: black;
+  background: none;
 `
 
 const TitleTextElem = styled.p`
