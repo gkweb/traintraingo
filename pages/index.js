@@ -89,7 +89,7 @@ export default class App extends React.Component {
   }
 
   updateSearch (event) {
-    this.setState({search: this.state.inputSearchTxt, initialRun: false})
+    this.setState({search: encodeURI(this.state.inputSearchTxt), initialRun: false})
   }
 
   handleSearch(event) {
