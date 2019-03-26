@@ -94,7 +94,7 @@ export default class App extends React.Component {
   }
 
   handleSearch(event) {
-    this.setState({inputSearchTxt: event.currentTarget.value})
+    this.setState({inputSearchTxt: event.currentTarget.value.trim()})
     this.updateSearch()
   }
 
