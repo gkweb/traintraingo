@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
 import { H3 } from './text'
-import { getItems } from './../helpers/localStorage'
+import { getItems } from './../helpers/local-storage'
 import {IconElem, savePath} from './save-icon'
 
 const FavoriteListElem = styled.ul`
@@ -34,7 +34,11 @@ const FavoriteLinkElem = styled.a`
 `
 
 const FavouritesContainerElem = styled.section`
-  margin: 4em 2em;
+  margin: 4em 0;
+
+  @media screen and (min-width: 50em) {
+    margin: 4em 2em;
+  }
 `
 
 class Favourites extends React.Component {

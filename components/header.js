@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import Logo from './../components/logo-no-text'
 import Save from './../components/save'
 import Link from 'next/link'
-import { updateItem, removeItem, getItem } from './../helpers/localStorage'
+import { updateItem, removeItem, getItem } from './../helpers/local-storage'
 
 const HeaderElem = styled.header`
   display: flex;
