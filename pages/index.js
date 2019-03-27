@@ -51,6 +51,7 @@ const SearchInput = styled.input`
 const DescriptionElem = styled.p`
   color: white;
   text-align: center;
+  font-size: 1.25em;
 `
 
 const LogoContainer = styled.div`
@@ -123,8 +124,8 @@ export default class App extends React.Component {
   }
 }
 
-const Stops = (props) => (
-  <Query
+const Stops = (props) => {
+  return <Query
     query={gql`
     {
       stops(search_term: "${props.search_term}") {
@@ -136,7 +137,6 @@ const Stops = (props) => (
   >
     {({ loading, error, data }) => {
       if (error) return <p>Error :(</p>
-      if (props.search_term && props.search_term.length < 3) return null
       if (props.initialRun) return null
       if (loading) return <p>Loading...</p>
       if (!data.stops) return null
@@ -155,4 +155,4 @@ const Stops = (props) => (
       return v
     }}
   </Query>
-);
+}

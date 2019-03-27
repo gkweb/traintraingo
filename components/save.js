@@ -20,11 +20,15 @@ const ButtonElem = styled.button`
     outline: 0;
   }
 
+  &:hover {
+    transform: scale(1.05);
+  }
+
   &:hover,
   &:focus {
     overflow: visible;
     color: #EEDB57;
-    transform: scale(1.05);
+    
   }
 
   &:hover > span,

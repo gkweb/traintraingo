@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import { H3 } from './text'
 import { getItems } from './../helpers/local-storage'
-import {IconElem, savePath} from './save-icon'
+import {IconElem} from './save-icon'
+import {bookmarkPath} from './bookmark-icon'
 
 const FavoriteListElem = styled.ul`
   display: flex;
@@ -27,9 +28,17 @@ const FavoriteLinkElem = styled.a`
   background: white;
   box-shadow: -.0625em .125em .5em -.125em rgba(0,0,0,.7);
   color: black;
+  text-decoration: none;
+  transition: transform .125s ease;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+  }
 
   span:last-child {
     margin-left: .5em;
+    color: #EEDB57;
   }
 `
 
@@ -66,7 +75,7 @@ class Favourites extends React.Component {
             <Link href={`/departures/${val}`} passHref>
               <FavoriteLinkElem>
                 <span>{this.state.favourites[val]}</span>
-                <span><IconElem viewBox='0 0 32 32'>{savePath}</IconElem></span>
+                <span><IconElem viewBox='0 0 32 32'>{bookmarkPath}</IconElem></span>
               </FavoriteLinkElem>
             </Link>
         </FavoriteItemElem>
