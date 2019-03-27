@@ -54,7 +54,7 @@ const DescriptionElem = styled.p`
 `
 
 const LogoContainer = styled.div`
-  margin: 0 auto 2em;
+  margin: 2em auto;
   max-width: 15em;
 `
 

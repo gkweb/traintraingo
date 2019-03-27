@@ -14,6 +14,7 @@ const ButtonElem = styled.button`
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  transition: .125s transform ease;
 
   &:focus {
     outline: 0;
@@ -22,7 +23,8 @@ const ButtonElem = styled.button`
   &:hover,
   &:focus {
     overflow: visible;
-    color: yellow;
+    color: #EEDB57;
+    transform: scale(1.05);
   }
 
   &:hover > span,
@@ -43,10 +45,18 @@ const Text = styled.span`
   z-index: 99;
 `
 
+const IconContainerSavedElem = styled.span`
+  fill: #EEDB57;
+`
+
+const IconContainerUnsaveElem = styled.span`
+  fill: #EEDB57;
+`
+
 const Save = ({isSaved, handler}) => {
   return (
     <ButtonElem onClick={handler}>
-      <IconElem viewBox='0 0 32 32'>
+      <IconElem viewBox='0 0 32 32' style={isSaved ? {fill: '#EEDB57', stroke: '#EEDB57'} : null}>
         {isSaved ? savePath : unsavePath}
       </IconElem>
       <Text>{isSaved ? 'unsave' : 'save'}</Text>
