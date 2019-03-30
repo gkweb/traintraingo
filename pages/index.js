@@ -8,8 +8,6 @@ import {PageContainer} from './../components/layout'
 import Main from './../components/main'
 import Logo from './../components/logo'
 import Favourites from './../components/favourites'
-import { ButtonElem } from './../components/button'
-import {P as Blurb, H1 as Title} from './../components/text'
 
 const StopButton = styled((props) => (<Link href={props.href} passHref><a className={props.className}>{props.children}</a></Link>))`
   display: block;
@@ -27,10 +25,13 @@ const StopButton = styled((props) => (<Link href={props.href} passHref><a classN
   }
 `
 
-const SearchButton = styled(ButtonElem)`
-  display: inline-block;
-  padding: 1em;
-  width: 5em;
+const StopContainerElem = styled.div`
+  margin-top: 1em;
+  color: white;
+`
+
+const StopResultsTitle = styled.h3`
+  margin-bottom: 1rem;
 `
 
 const SearchInput = styled.input`
@@ -136,7 +137,7 @@ const Stops = (props) => {
     `}
   >
     {({ loading, error, data }) => {
-      if (error) return <p>Error :(</p>
+      if (error) return <p>Error :({console.log(error)}</p>
       if (props.initialRun) return null
       if (loading) return <p>Loading...</p>
       if (!data.stops) return null
@@ -144,11 +145,11 @@ const Stops = (props) => {
 
       let v = null
       if (data.stops &&
-        (((data.stops || []).length > 0) && 
+        (((data.stops || []).length > 0) &&
         typeof data.stops === "object")) {
-        v = data.stops.map((stop, index) => (
+        v = <StopContainerElem><StopResultsTitle>Results:</StopResultsTitle>{data.stops.map((stop, index) => (
           <StopButton key={index} href={`/departures/${stop.stop_id}`}>{stop.stop_name}</StopButton>
-        ));
+        ))}</StopContainerElem>;
       } else {
         v = <div>Nothing found</div>
       }
