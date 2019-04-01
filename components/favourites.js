@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
 import { H3 } from './text'
-import { getItems } from './../helpers/local-storage'
+import { getItems } from './../lib/local-storage'
 import {IconElem} from './save-icon'
 import {bookmarkPath} from './bookmark-icon'
 

@@ -5,8 +5,8 @@
   "author": "Glade <gladekettle@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "NODE_ENV=production nodemon server/index.js",
-    "start:dev": "nodemon server/index.js",
+    "start": "NODE_ENV=production nodemon server/local.js",
+    "start:dev": "nodemon server/local.js",
     "dev": "next",
     "build": "run-p build:**",
     "build:next": "next build",
