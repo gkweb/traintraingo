@@ -1,0 +1,36 @@
+{
+  "name": "train-train-go-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon src/index.js",
+    "build": "run-p build:**",
+    "start:lambda": "GQL_DEBUG=true netlify-lambda serve src/lambda",
+    "start:lambda:debug": "GQL_DEBUG=true npx --node-arg=--inspect netlify-lambda serve src/lambda --config ./webpack.functions.js",
+    "build:lambda": "netlify-lambda build src/lambda",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-datasource-rest": "^0.3.2",
+    "apollo-server": "^2.4.8",
+    "apollo-server-lambda": "^2.4.8",
+    "bufferutil": "^4.0.1",
+    "dotenv": "^7.0.0",
+    "graphql": "^14.1.1",
+    "graphql-log": "^0.1.3",
+    "jssha": "^2.3.1",
+    "node-fetch": "^2.3.0",
+    "nodemon": "^1.18.10",
+    "ptv-api-signature": "^1.0.7",
+    "utf-8-validate": "^5.0.2"
+  },
+  "devDependencies": {
+    "netlify-lambda": "^1.4.3",
+    "npm-run-all": "^4.1.5"
+  }
+}
