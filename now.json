@@ -13,7 +13,7 @@
   ],
   "routes": [
     { "src": "/(.*)", "dest": "/client/$1" },
-    { "src": "/api/(.*)", "dest": "/api/build/$1" },
+    { "src": "/api/(.*)", "dest": "/api/$1" },
     { "src": "/departures/(?<stop_id>[^/]+)$", "dest": "/client/departures?stop_id=$stop_id" }
   ]
 }
