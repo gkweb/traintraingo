@@ -9,7 +9,23 @@ import Main from './../components/main'
 import Logo from './../components/logo'
 import Favourites from './../components/favourites'
 
-const StopButton = styled((props) => (<Link href={props.href} passHref><a className={props.className}>{props.children}</a></Link>))`
+// const StopButton = styled((props) => (<Link href={props.href} passHref as={props.as}><a>{props.children}</a></Link>))`
+//   display: block;
+//   box-sizing: border-box;
+//   width: 100%;
+//   padding: 1em;
+//   background-color: #333434;
+//   color: white;
+//   text-decoration: none;
+
+//   &:hover,
+//   &:focus {
+//     text-decoration: underline;
+//     background-color: #202121;
+//   }
+// `
+
+const StopButtonElem = styled.a`
   display: block;
   box-sizing: border-box;
   width: 100%;
@@ -148,7 +164,9 @@ const Stops = (props) => {
         (((data.stops || []).length > 0) &&
         typeof data.stops === "object")) {
         v = <StopContainerElem><StopResultsTitle>Results:</StopResultsTitle>{data.stops.map((stop, index) => (
-          <StopButton key={index} href={`/departures/${stop.stop_id}`}>{stop.stop_name}</StopButton>
+          <Link key={index} href={`/departures/?stop_id=${stop.stop_id}`} as={`/departures/${stop.stop_id}`} passHref>
+            <StopButtonElem>{stop.stop_name}</StopButtonElem>
+          </Link>
         ))}</StopContainerElem>;
       } else {
         v = <div>Nothing found</div>

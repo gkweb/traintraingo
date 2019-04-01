@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "alias": "traintraingo.com.au",
   "env": {
     "DEV_ID": "@secret-ptv-dev-id",
     "DEV_KEY": "@secret-ptv-dev-key",
@@ -8,12 +9,12 @@
   },
   "builds": [
     { "src": "client/package.json", "use": "@now/next" },
-    { "src": "api/package.json", "use": "@now/node" },
+    { "src": "api/src/index.js", "use": "@now/node-server" },
     { "src": "client/next.config.js", "use": "@now/next" }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/client/$1" },
-    { "src": "/api/(.*)", "dest": "/api/$1" },
-    { "src": "/departures/(?<stop_id>[^/]+)$", "dest": "/client/departures?stop_id=$stop_id" }
+    { "src": "/api/(.*)", "dest": "/api/src/index.js" },
+    { "src": "/departures/(?<stop_id>[^/]+)$", "dest": "/client/pages/departures?stop_id=$stop_id" },
+    { "src": "/(.*)", "dest": "/client/$1" }
   ]
 }
