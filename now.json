@@ -6,6 +6,6 @@
   ],
   "routes": [
     { "src": "/(.*)", "dest": "/client/$1" },
-    { "src": "/departures/(?<stop_id>[^/]+)$", "dest": "/departures?stop_id=$stop_id" }
+    { "src": "/departures/(?<stop_id>[^/]+)$", "dest": "/client/departures?stop_id=$stop_id" }
   ]
 }
