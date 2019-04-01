@@ -1,10 +1,11 @@
 {
   "version": 2,
   "builds": [
-    { "src": "package.json", "use": "@now/next" },
-    { "src": "next.config.js", "use": "@now/next" }
+    { "src": "client/package.json", "use": "@now/next" },
+    { "src": "client/next.config.js", "use": "@now/next" }
   ],
   "routes": [
+    { "src": "/(.*)", "dest": "/client/$1" },
     { "src": "/departures/(?<stop_id>[^/]+)$", "dest": "/departures?stop_id=$stop_id" }
   ]
 }
