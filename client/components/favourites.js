@@ -72,7 +72,7 @@ class Favourites extends React.Component {
       <FavoriteListElem>
         {Object.keys(this.state.favourites).map((val, ind) => (
           <FavoriteItemElem key={ind}>
-            <Link href={`/departures/${val}`} passHref>
+            <Link href={`/departures/${val}`} as={`/departures/${val}`} passHref>
               <FavoriteLinkElem>
                 <span>{this.state.favourites[val]}</span>
                 <span><IconElem viewBox='0 0 32 32'>{bookmarkPath}</IconElem></span>
