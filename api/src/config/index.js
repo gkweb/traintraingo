@@ -1,6 +1,8 @@
-path = require('path')
-
-require('dotenv').config()
+if (process.env.NODE_ENV !== 'production') {
+  const ne = require('now-env')
+  console.log(process.env)
+  console.log(ne)
+}
 
 // Allows for intercepting configuration prod/dev environments
 module.exports = {

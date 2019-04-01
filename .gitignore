@@ -4,3 +4,4 @@ node_modules/
 yarn-error.log
 out/*
 .DS_Store
+now-secrets.json

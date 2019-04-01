@@ -1,5 +1,11 @@
 {
   "version": 2,
+  "env": {
+    "DEV_ID": "@secret-ptv-dev-id",
+    "DEV_KEY": "@secret-ptv-dev-key",
+    "API_BASE_URL": "https://timetableapi.ptv.vic.gov.au",
+    "IS_DEBUG": false
+  },
   "builds": [
     { "src": "client/package.json", "use": "@now/next" },
     { "src": "api/package.json", "use": "@now/node" },

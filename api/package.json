@@ -5,11 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon src/index.js",
+    "start:dev": "NOW_CONFIG=now.json nodemon src/index.js",
     "build": "run-p build:**",
-    "start:lambda": "GQL_DEBUG=true netlify-lambda serve src/lambda",
-    "start:lambda:debug": "GQL_DEBUG=true npx --node-arg=--inspect netlify-lambda serve src/lambda --config ./webpack.functions.js",
-    "build:lambda": "netlify-lambda build src/lambda",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -31,6 +28,7 @@
   },
   "devDependencies": {
     "netlify-lambda": "^1.4.3",
+    "now-env": "^3.1.0",
     "npm-run-all": "^4.1.5"
   }
 }
