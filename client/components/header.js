@@ -17,6 +17,7 @@ const HeaderElem = styled.header`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 200;
 
   @media screen and (min-width: 50em) {
     height: 6.625em;
