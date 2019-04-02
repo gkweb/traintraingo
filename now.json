@@ -14,7 +14,7 @@
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/src/index.js" },
-    { "src": "/departures/(?<stop_id>[^/]+)$", "dest": "/client/pages/departures?stop_id=$stop_id" },
+    { "src": "/departures/(?<stop_id>[^/]+)$", "dest": "/client/departures?stop_id=$stop_id" },
     { "src": "/(.*)", "dest": "/client/$1" }
   ]
 }

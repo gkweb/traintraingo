@@ -38,7 +38,7 @@ const LogoContainer = styled.div`
   margin: 0;
 
   @media screen and (max-width: 50em) {
-    max-width: 3em;
+    max-width: 2em;
   }
 `
 
@@ -46,7 +46,8 @@ class Header extends React.Component {
   constructor() {
     super()
     this.state = {
-      isSaved: false
+      isSaved: false,
+      clientReady: false
     }
 
     this.handleSave = this.handleSave.bind(this)
@@ -70,14 +71,15 @@ class Header extends React.Component {
     const isSaved = (getItem(this.props.stopId))
 
     this.setState({
-      isSaved: isSaved
+      isSaved: isSaved,
+      clientReady: true
     })
   }
 
   render() {
     const {
       headerTitle,
-      stopId
+      isLoading
     } = this.props
 
     return (
@@ -89,8 +91,8 @@ class Header extends React.Component {
           </LogoContainer>
         </a>
       </Link>
-      {headerTitle ? <TitleElem>{headerTitle}</TitleElem> : null}
-      {stopId ? <Save isSaved={this.state.isSaved} handler={this.handleSave} /> : null }
+      {(headerTitle && !isLoading) ? <TitleElem>{headerTitle}</TitleElem> : null}
+      {!isLoading ? <Save isSaved={this.state.isSaved} handler={this.handleSave} /> : null }
     </HeaderElem>
     )
   }

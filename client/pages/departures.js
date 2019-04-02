@@ -5,10 +5,9 @@ import gql from 'graphql-tag'
 import NextSeo from 'next-seo'
 import Header from './../components/header'
 import Main from './../components/main'
-import Logo from './../components/logo-no-text'
-import { PageContainer } from './../components/layout'
 import Departure from './../components/departure'
 import Footer from './../components/footer'
+import Loading from './../components/loading'
 
 const DepartureUlElem = styled.ul`
   display: flex;
@@ -65,10 +64,8 @@ const Stop = (props) => (
     {({ loading, error, data }) => {
 
       let v = null
-      let stop_name = 'loading...'
-      if (loading) {
-        v = <p>Loading...</p>
-      } else if (error) {
+      let stop_name = ''
+      if (error) {
         stop_name = 'Error!'
         v = <p>Error, Something happened.</p>
       } else if (
@@ -100,11 +97,12 @@ const Stop = (props) => (
             description: stop_name
           }}
         />
-        <Main>
-        <Header headerTitle={stop_name} stopId={(error ? null : props.stop_id)}/>
+        {loading ? <Loading /> : (<Main>
+          {data.stop_id}
+        <Header headerTitle={stop_name} stopId={(error ? null : props.stop_id)} isLoading={loading}/>
           {v}
         <Footer/>
-        </Main>
+        </Main>)}
         </>
       )
     }}

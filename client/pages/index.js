@@ -9,22 +9,6 @@ import Main from './../components/main'
 import Logo from './../components/logo'
 import Favourites from './../components/favourites'
 
-// const StopButton = styled((props) => (<Link href={props.href} passHref as={props.as}><a>{props.children}</a></Link>))`
-//   display: block;
-//   box-sizing: border-box;
-//   width: 100%;
-//   padding: 1em;
-//   background-color: #333434;
-//   color: white;
-//   text-decoration: none;
-
-//   &:hover,
-//   &:focus {
-//     text-decoration: underline;
-//     background-color: #202121;
-//   }
-// `
-
 const StopButtonElem = styled.a`
   display: block;
   box-sizing: border-box;
@@ -154,8 +138,7 @@ const Stops = (props) => {
   >
     {({ loading, error, data }) => {
       if (error) return <p>Error :({console.log(error)}</p>
-      if (props.initialRun) return null
-      if (loading) return <p>Loading...</p>
+      if (loading && (props.search_term && props.search_term.length >= 2)) return <p>Loading...</p>
       if (!data.stops) return null
       if (data.stops && data.stops.length <= 0) return null
 
