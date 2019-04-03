@@ -6,8 +6,9 @@ const ContainerElem = styled.div`
   padding: 1.5em 1em 1em;
   width: 100%;
   border: 1px solid black;
-  background: white;
-  box-shadow: -.0625em .125em .5em -.125em rgba(0,0,0,.7);
+  background: ${props => props.theme.inversePrimaryBg};
+  color: ${props => props.theme.inversePrimary};
+  box-shadow: -.0625em .125em .5em -.125em rgba(0,0,0,.5);
 `
 
 const TitleElem = styled.h2`

@@ -13,6 +13,14 @@ const dark = {
   'logoPrimaryBg': '#5EC64C',
   'logoSecondaryBg': '#105C26',
   'logoPrimary': '#fff',
+  'logoSecondary': '#fff',
+  'input': '#fff',
+  'inputBg': '#222',
+  'inputBorder': '#000',
+  'inputIcon': 'rgba(255, 255, 255, .25)',
+  'link': '#fff',
+  'linkBg': '#333',
+  'linkHoverBg': '#222'
 }
 
 const light = {
@@ -20,16 +28,24 @@ const light = {
   'secondaryBg': '#ddd',
   'tertiaryBg': '#bbb',
   'inversePrimaryBg': '#f7f7f7',
-  'primary': '#4C4C4C',
+  'primary': '#4c4c4c',
   'secondary': '#9a9a9a',
-  'tertiary': '#4C4C4C',
-  'inversePrimaryBg': '#000',
+  'tertiary': '#f7f7f7',
+  'inversePrimary': '#4c4c4c',
   'highlightPrimary': '#EEDB57',
   'highlightSecondary': '#ffB86f',
   'highlightTertiary': '',
   'logoPrimaryBg': '#5EC64C',
   'logoSecondaryBg': '#105C26',
-  'logoPrimary': '#4C4C4C'
+  'logoPrimary': '#4c4c4c',
+  'logoSecondary': '#fff',
+  'input': '#222',
+  'inputBg': '#fff',
+  'inputBorder': '#ccc',
+  'inputIcon': 'rgb(76, 76, 76, .75)',
+  'link': '#4495d4',
+  'linkBg': '#f7f7f7',
+  'linkHoverBg': '#fff'
 }
 
 export {

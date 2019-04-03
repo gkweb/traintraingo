@@ -22,7 +22,7 @@ const FavoriteLinkElem = styled.a`
   align-items: center;
   width: 100%;
   max-width: 30em;
-  padding: 1.5em 1em 1em;
+  padding: 1em;
   border: 1px solid black;
   background: ${props => props.theme.primary};
   box-shadow: -.0625em .125em .5em -.125em rgba(0,0,0,.7);
@@ -42,10 +42,12 @@ const FavoriteLinkElem = styled.a`
 `
 
 const FavouritesContainerElem = styled.section`
-  margin: 4em 0;
+  padding: 1em 1em 4em;
+  background-color: #fff;
 
   @media screen and (min-width: 50em) {
-    margin: 4em 2em;
+    padding: 1em 1em 4em;
+    margin-top: 3em;
   }
 `
 

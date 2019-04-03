@@ -13,7 +13,7 @@ const DepartureUlElem = styled.ul`
   display: flex;
   flex-flow: row wrap;
   margin: 4em 0 0;
-  padding: 0;
+  padding: 1em;
   width: 100%;
 
   @media screen and  (min-width: 50em) {

@@ -15,14 +15,14 @@ const StopButtonElem = styled.a`
   box-sizing: border-box;
   width: 100%;
   padding: 1em;
-  background-color: ${props => props.theme.secondaryBg};
-  color: ${props => props.theme.primary};
+  background-color: ${props => props.theme.linkBg};
+  color: ${props => props.theme.link};
   text-decoration: none;
 
   &:hover,
   &:focus {
     text-decoration: underline;
-    background-color: ${props => props.theme.tertiaryBg};
+    background-color: ${props => props.theme.linkHoverBg};
   }
 `
 
@@ -42,13 +42,15 @@ const DescriptionElem = styled.p`
 `
 
 const LogoContainer = styled.div`
-  margin: 2em auto 3em;
+  padding: 3em 1em 0;
+  margin: 0 auto 3em;
   max-width: 15em;
 `
 
 const ContentElem = styled.div`
   width: 100%;
   max-width: 50em;
+  padding: 0 1em; 
   margin: 0 auto;
 `
 
@@ -90,15 +92,15 @@ export default class App extends React.Component {
       }}
       />
       <Main>
-      <LogoContainer>
-        <Logo />
-      </LogoContainer>
+        <LogoContainer>
+          <Logo />
+        </LogoContainer>
         <ContentElem>
           <Search onSubmit={event => (event.preventDefault())} onChange={this.handleSearch} initialRun={this.state.initialRun}/>
           {(this.state.search.length > 2) ? <Stops search_term={this.state.search} /> : <DescriptionElem>Melbourne, Australia train times with no bloat. Search, Select, then View departures.</DescriptionElem>}
         </ContentElem>
-        <Favourites />
       </Main>
+      <Favourites />
     </PageContainer>
     )
   }

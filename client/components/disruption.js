@@ -30,7 +30,7 @@ const TitleElem = styled.button`
   font-size: 1em;
   font-weight: bold;
   font-family:'Lustria', serif;
-  color: ${props => props.theme.tertiary};
+  color: ${props => props.theme.inversePrimary};
   background: none;
   position: relative;
 `
@@ -67,7 +67,7 @@ const DisruptionDescElem = styled.span`
 
 const DisruptionReadMoreElem = styled.a`
   display: block;
-  color: ${props => props.theme.primary};
+  color: ${props => props.theme.link};
 `
 
 class Disruption extends React.Component {
