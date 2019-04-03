@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-// import {IconElem, savePath, unsavePath} from './save-icon'
 import {Save as SaveIcon, Unsave} from './icon'
 
 const ButtonElem = styled.button`

@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
-import { H3 } from './text'
-import { getItems } from './../lib/local-storage'
-import {IconElem} from './save-icon'
+import {H3} from './text'
+import {getItems} from './../lib/local-storage'
 import {Bookmark} from './icon'
 
 const FavoriteListElem = styled.ul`
