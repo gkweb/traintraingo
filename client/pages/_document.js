@@ -28,6 +28,10 @@ export default class MyDocument extends Document {
         <Head>
           <meta name="viewport" content="width=device-width,initial-scale=1" />
           <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico' />
+          <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png" />
+          <link rel="manifest" href="/static/site.webmanifest"></link>
           <meta property="og:type" content="website" />
           <meta property="og:image" content="https://traintraingo.com.au/static/traintraingo-og.jpg" />
           <meta property="og:url" content="https://traintraingo.com.au" />
