@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 
 const FooterElem = styled.footer`
+  padding: 0 1em 3em;
   margin-top: 5em;
   color: ${props => props.theme.secondary};
 `

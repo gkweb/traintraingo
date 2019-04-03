@@ -15,7 +15,7 @@ class MyApp extends App {
   render () {
     const { Component, pageProps, apolloClient } = this.props
     return (
-      <ThemeProvider theme={light}>
+      <ThemeProvider theme={dark}>
         <Container>
           <GlobalStyle />
           <ApolloProvider client={apolloClient}>

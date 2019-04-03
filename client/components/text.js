@@ -36,6 +36,18 @@ export const H3 = styled.h3`
   }
 `
 
+export const H4 = styled.h4`
+  margin: 1rem 0;
+  max-width: 20em;
+  font-family: 'Poppins', sans-serif;
+  color: ${props => props.theme.primary};
+  font-size: 1em;
+
+  @media screen and (min-width: 48em) {
+    font-size: 1.125em;
+  }
+`
+
 export const P = styled.p`
   margin: 1em auto;
   text-align: center;

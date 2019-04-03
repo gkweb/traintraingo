@@ -55,6 +55,10 @@ const ContentElem = styled.div`
   margin: 0 auto;
 `
 
+const TopContentElem = styled.div`
+  min-height: 60vh;
+`
+
 const StopsLoadingTextElem = styled.p`
   color: ${props => props.theme.primary};
 `
@@ -93,15 +97,17 @@ export default class App extends React.Component {
       }}
       />
       <Main>
-        <LogoContainer>
-          <Logo />
-        </LogoContainer>
-        <ContentElem>
-          <Search onSubmit={event => (event.preventDefault())} onChange={this.handleSearch} initialRun={this.state.initialRun}/>
-          {(this.state.search.length > 2) ? <Stops search_term={this.state.search} /> : <DescriptionElem>Melbourne, Australia train times with no bloat. Search, Select, then View departures.</DescriptionElem>}
-        </ContentElem>
+        <TopContentElem>
+          <LogoContainer>
+            <Logo />
+          </LogoContainer>
+          <ContentElem>
+            <Search onSubmit={event => (event.preventDefault())} onChange={this.handleSearch} initialRun={this.state.initialRun}/>
+            {(this.state.search.length > 2) ? <Stops search_term={this.state.search} /> : <DescriptionElem>Melbourne, Australia train times with no bloat. Search, Select, then View departures.</DescriptionElem>}
+          </ContentElem>
+        </TopContentElem>
+        <Favourites />
       </Main>
-      <Favourites />
     </PageContainer>
     )
   }
