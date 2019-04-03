@@ -40,6 +40,7 @@ const DescriptionElem = styled.p`
   color: ${props => props.theme.primary};
   text-align: center;
   font-size: 1.25em;
+  margin-bottom: 0;
 `
 
 const LogoContainer = styled.div`
@@ -57,6 +58,7 @@ const ContentElem = styled.div`
 
 const TopContentElem = styled.div`
   min-height: 60vh;
+  padding-bottom: 1em;
 `
 
 const StopsLoadingTextElem = styled.p`
