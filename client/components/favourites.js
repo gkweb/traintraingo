@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { H3 } from './text'
 import { getItems } from './../lib/local-storage'
 import {IconElem} from './save-icon'
-import {bookmarkPath} from './bookmark-icon'
+import {Bookmark} from './icon'
 
 const FavoriteListElem = styled.ul`
   display: flex;
@@ -75,7 +75,7 @@ class Favourites extends React.Component {
             <Link href={`/departures/${val}`} as={`/departures/${val}`} passHref>
               <FavoriteLinkElem>
                 <span>{this.state.favourites[val]}</span>
-                <span><IconElem viewBox='0 0 32 32'>{bookmarkPath}</IconElem></span>
+                <span><Bookmark/></span>
               </FavoriteLinkElem>
             </Link>
         </FavoriteItemElem>

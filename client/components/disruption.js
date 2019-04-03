@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
 import styled from 'styled-components'
-import {ChevronIcon} from './icon'
+import {Chevron} from './icon'
 
 const ContainerElem = styled.div`
   display: flex;
   flex-flow: column nowrap;
 `
 
-const ChevronIconElem = styled(ChevronIcon)`
+const ChevronIconElem = styled(Chevron)`
   max-width: 1em;
   margin-left: auto;
   transform: ${props => (props.isOpen ? 'rotate(-90deg)' : 'rotate(0)')}

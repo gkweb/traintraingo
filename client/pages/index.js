@@ -8,60 +8,42 @@ import {PageContainer} from './../components/layout'
 import Main from './../components/main'
 import Logo from './../components/logo'
 import Favourites from './../components/favourites'
+import Search from './../components/search'
 
 const StopButtonElem = styled.a`
   display: block;
   box-sizing: border-box;
   width: 100%;
   padding: 1em;
-  background-color: #333434;
-  color: white;
+  background-color: ${props => props.theme.secondaryBg};
+  color: ${props => props.theme.primary};
   text-decoration: none;
 
   &:hover,
   &:focus {
     text-decoration: underline;
-    background-color: #202121;
+    background-color: ${props => props.theme.tertiaryBg};
   }
 `
 
 const StopContainerElem = styled.div`
   margin-top: 1em;
-  color: white;
+  color: ${props => props.theme.primary};
 `
 
 const StopResultsTitle = styled.h3`
   margin-bottom: 1rem;
 `
 
-const SearchInput = styled.input`
-  box-sizing: border-box;
-  width: 100%;
-  padding: 1em;
-  background-color: #222;
-  border: 1px solid #111;
-  color: white;
-  border-radius: .25em;
-  font-size: 1.1em;
-
-  &:focus {
-    outline: 0;
-  }
-`
-
 const DescriptionElem = styled.p`
-  color: white;
+  color: ${props => props.theme.primary};
   text-align: center;
   font-size: 1.25em;
 `
 
 const LogoContainer = styled.div`
-  margin: 2em auto;
+  margin: 2em auto 3em;
   max-width: 15em;
-`
-
-const FormElem = styled.form`
-  display: block;
 `
 
 const ContentElem = styled.div`
@@ -70,11 +52,9 @@ const ContentElem = styled.div`
   margin: 0 auto;
 `
 
-const Search = (props) => (
-  <FormElem onSubmit={props.onSubmit}>
-    <SearchInput name="search_field" type="text" onChange={props.onChange} autoComplete={'off'}/>
-  </FormElem>
-)
+const StopsLoadingTextElem = styled.p`
+  color: ${props => props.theme.primary};
+`
 
 export default class App extends React.Component {
   constructor() {
@@ -105,7 +85,7 @@ export default class App extends React.Component {
     <PageContainer>
       <NextSeo
       config={{
-        title: 'Train Train Go - Train departures without the bloat.',
+        title: 'Train Train Go 🚆🚆🚶 - Train departures without the bloat.',
         description: 'Train train go'
       }}
       />
@@ -115,8 +95,7 @@ export default class App extends React.Component {
       </LogoContainer>
         <ContentElem>
           <Search onSubmit={event => (event.preventDefault())} onChange={this.handleSearch} initialRun={this.state.initialRun}/>
-          <Stops search_term={this.state.search} />
-          <DescriptionElem>Melbourne, Australia train times with no bloat. Search, Select, then View departures.</DescriptionElem>
+          {(this.state.search.length > 2) ? <Stops search_term={this.state.search} /> : <DescriptionElem>Melbourne, Australia train times with no bloat. Search, Select, then View departures.</DescriptionElem>}
         </ContentElem>
         <Favourites />
       </Main>
@@ -138,7 +117,7 @@ const Stops = (props) => {
   >
     {({ loading, error, data }) => {
       if (error) return <p>Error :({console.log(error)}</p>
-      if (loading && (props.search_term && props.search_term.length >= 2)) return <p>Loading...</p>
+      if (loading && (props.search_term && props.search_term.length >= 2)) return (<StopsLoadingTextElem>Loading...</StopsLoadingTextElem>)
       if (!data.stops) return null
       if (data.stops && data.stops.length <= 0) return null
 

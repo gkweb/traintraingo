@@ -2,7 +2,8 @@ import App, { Container } from 'next/app'
 import React from 'react'
 import { ApolloProvider } from 'react-apollo'
 import withApolloClient from './../lib/with-apollo-client'
-import { createGlobalStyle } from 'styled-components'
+import {dark, light} from './../lib/theme'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -14,12 +15,14 @@ class MyApp extends App {
   render () {
     const { Component, pageProps, apolloClient } = this.props
     return (
-      <Container>
-        <GlobalStyle />
-        <ApolloProvider client={apolloClient}>
-          <Component {...pageProps} />
-        </ApolloProvider>
-      </Container>
+      <ThemeProvider theme={dark}>
+        <Container>
+          <GlobalStyle />
+          <ApolloProvider client={apolloClient}>
+            <Component {...pageProps} />
+          </ApolloProvider>
+        </Container>
+      </ThemeProvider>
     )
   }
 }
