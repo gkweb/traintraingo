@@ -18,7 +18,7 @@ const NoticeElem = styled.svg`
   width: 1.25em;
   height: 1.25em;
   margin-right: .25em;
-  fill: #ffB86f;
+  fill: ${props => props.theme.highlightSecondary};
 `
 
 const TitleElem = styled.button`
@@ -30,7 +30,7 @@ const TitleElem = styled.button`
   font-size: 1em;
   font-weight: bold;
   font-family:'Lustria', serif;
-  color: black;
+  color: ${props => props.theme.tertiary};
   background: none;
   position: relative;
 `
@@ -41,8 +41,8 @@ const TitleTextElem = styled.p`
 
 const ContentElem = styled.div`
   padding: 1em;
-  background-color: #444;
-  color: white;
+  background-color: ${props => props.theme.primaryBg};
+  color: ${props => props.theme.primary};
 `
 
 const DisruptionListElem = styled.ul`
@@ -67,7 +67,7 @@ const DisruptionDescElem = styled.span`
 
 const DisruptionReadMoreElem = styled.a`
   display: block;
-  color: white;
+  color: ${props => props.theme.primary};
 `
 
 class Disruption extends React.Component {

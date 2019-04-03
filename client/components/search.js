@@ -5,9 +5,9 @@ const SearchInput = styled.input`
 box-sizing: border-box;
 width: 100%;
 padding: 1em;
-background-color: #222;
+background-color: ${props => props.theme.tertiaryBg};
 border: 1px solid #111;
-color: white;
+color: ${props => props.theme.primary};
 border-radius: .25em;
 font-size: 1.1em;
 

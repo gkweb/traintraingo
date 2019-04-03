@@ -12,7 +12,7 @@ const HeaderElem = styled.header`
   width: 100%;
   height: 4em;
   border-bottom: 1px solid rgba(0, 0, 0, .25);
-  background-color: #444;
+  background-color: ${props => props.theme.primaryBg};
   margin-bottom: 1em;
   position: fixed;
   top: 0;
@@ -26,7 +26,7 @@ const HeaderElem = styled.header`
 
 const TitleElem = styled.h1`
   margin: 0 0 0 .5em;
-  color: white;
+  color: ${props => props.theme.primary};
   font-size: 1.25em;
 
   @media screen and (min-width: 50em) {

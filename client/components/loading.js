@@ -17,8 +17,8 @@ const LoadingContainerElem = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: #333;
-  color: white;
+  background: ${props => props.theme.secondaryBg};
+  color: ${props => props.theme.primary};
   text-align: center;
 `
 
@@ -33,7 +33,7 @@ const LoadingTextElem = styled.h1`
   margin: 0;
   padding: 0;
   font-size: 1.125em;
-  color: white;
+  color: ${props => props.theme.primary};
 `
 
 const Loading = () => (

@@ -10,7 +10,7 @@ const ButtonElem = styled.button`
   margin: 0 .25em 0;
   background: none;
   font-size: 1em;
-  color: white;
+  color: ${props => props.theme.primary};
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -27,7 +27,7 @@ const ButtonElem = styled.button`
   &:hover,
   &:focus {
     overflow: visible;
-    color: #EEDB57;
+    color: ${props => props.theme.highlightPrimary};
     
   }
 
@@ -44,17 +44,17 @@ const Text = styled.span`
   bottom: -.25em;
   left: -999em;
   transform: translate(-50%, 100%);
-  background-color: #222;
-  color: white;
+  background-color: ${props => props.theme.tertiaryBg};
+  color: ${props => props.theme.primary};
   z-index: 99;
 `
 
 const IconContainerSavedElem = styled.span`
-  fill: #EEDB57;
+  fill: ${props => props.theme.highlightPrimary};
 `
 
 const IconContainerUnsaveElem = styled.span`
-  fill: #EEDB57;
+  fill: ${props => props.theme.highlightPrimary};
 `
 
 const Save = ({isSaved, handler}) => {

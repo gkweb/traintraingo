@@ -3,13 +3,13 @@ import Link from 'next/link'
 
 const FooterElem = styled.footer`
   margin-top: 5em;
-  color: #ddd;
+  color: ${props => props.theme.secondary};
 `
 
 const LinkElem = styled.a`
-  color: #ddd;
+  color: ${props => props.theme.secondary};
   &:visited {
-    color: #ddd;
+    color: ${props => props.theme.secondary};
   }
 
   &:hover,

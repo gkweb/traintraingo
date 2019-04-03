@@ -24,9 +24,9 @@ const FavoriteLinkElem = styled.a`
   max-width: 30em;
   padding: 1.5em 1em 1em;
   border: 1px solid black;
-  background: white;
+  background: ${props => props.theme.primary};
   box-shadow: -.0625em .125em .5em -.125em rgba(0,0,0,.7);
-  color: black;
+  color: ${props => props.theme.tertiary};
   text-decoration: none;
   transition: transform .125s ease;
 
@@ -37,7 +37,7 @@ const FavoriteLinkElem = styled.a`
 
   span:last-child {
     margin-left: .5em;
-    color: #EEDB57;
+    color: ${props => props.theme.highlightPrimary};
   }
 `
 
