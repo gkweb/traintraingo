@@ -27,6 +27,7 @@ const StopButtonElem = styled.a`
 `
 
 const StopContainerElem = styled.div`
+  padding-bottom: 2em;
   margin-top: 1em;
   color: ${props => props.theme.primary};
 `
