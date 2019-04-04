@@ -37,6 +37,7 @@ const FavoriteLinkElem = styled.a`
 
   span:last-child {
     margin-left: .5em;
+    max-width: 1em;
     color: ${props => props.theme.highlightPrimary};
   }
 `

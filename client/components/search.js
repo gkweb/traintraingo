@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import {Search as SearchIcon} from './../components/icon'
+import PropTypes from 'prop-types'
 
 const SearchInput = styled.input`
 box-sizing: border-box;
@@ -9,7 +10,12 @@ background-color: ${props => props.theme.inputBg};
 border: 1px solid ${props => props.theme.inputBorder};
 color: ${props => props.theme.input};
 border-radius: .25em;
-font-size: 1.1em;
+font-size: 1em;
+
+@media screen and (min-width: 50em) {
+  padding: 1em;
+  font-size: 1.1em;
+}
 
 &:focus {
   outline: 0;
@@ -61,6 +67,11 @@ render() {
   {this.state.hasFocus ? null : <SearchIconElem />}
 </FormElem>
 )}
+}
+
+Search.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired
 }
 
 export default Search

@@ -1,9 +1,9 @@
-import App, { Container } from 'next/app'
+import App, {Container} from 'next/app'
 import React from 'react'
-import { ApolloProvider } from 'react-apollo'
+import {ApolloProvider} from 'react-apollo'
 import withApolloClient from './../lib/with-apollo-client'
-import {dark, light} from './../lib/theme'
-import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import {ThemeManagementContext, themes} from './../lib/theme'
+import {createGlobalStyle, ThemeProvider} from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -15,16 +15,18 @@ class MyApp extends App {
   render () {
     const { Component, pageProps, apolloClient } = this.props
     return (
-      <ThemeProvider theme={dark}>
-        <Container>
-          <GlobalStyle />
-          <ApolloProvider client={apolloClient}>
-            <Component {...pageProps} />
-          </ApolloProvider>
-        </Container>
-      </ThemeProvider>
+        <ThemeProvider theme={this.context.theme.values}>
+          <Container>
+            <GlobalStyle />
+            <ApolloProvider client={apolloClient}>
+              <Component {...pageProps} />
+            </ApolloProvider>
+          </Container>
+        </ThemeProvider>
     )
   }
 }
+
+MyApp.contextType = ThemeManagementContext
 
 export default withApolloClient(MyApp)

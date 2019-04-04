@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 import {Chevron} from './icon'
 
 const ContainerElem = styled.div`
@@ -120,6 +121,10 @@ class Disruption extends React.Component {
 
     return d
   }
+}
+
+Disruption.propTypes = {
+  disruptionData: PropTypes.array
 }
 
 export default Disruption

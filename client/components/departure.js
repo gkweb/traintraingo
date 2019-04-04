@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import * as moment from 'moment'
 import Disruption from './disruption'
+import PropTypes from 'prop-types'
 
 const ContainerElem = styled.div`
   padding: 1.5em 1em 1em;
@@ -50,6 +51,15 @@ const Departure = ({lineName, directionName, platformNumber, scheduledDep, estim
     <Disruption disruptionData={disruptions}/>
   </ContainerElem>
   )
+}
+
+Departure.propTypes = {
+  lineName: PropTypes.string,
+  directionName: PropTypes.string,
+  platformNumber: PropTypes.string,
+  scheduledDep: PropTypes.string,
+  estimatedDep: PropTypes.string,
+  disruptions: PropTypes.array
 }
 
 export default Departure

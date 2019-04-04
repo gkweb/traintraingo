@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 import Logo from './../components/logo-no-text'
 import Save from './../components/save'
 import Link from 'next/link'
@@ -97,6 +98,11 @@ class Header extends React.Component {
     </HeaderElem>
     )
   }
+}
+
+Header.propTypes = {
+  headerTitle: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool.isRequired
 }
 
 export default Header

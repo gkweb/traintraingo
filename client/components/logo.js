@@ -1,4 +1,5 @@
 import styled, {withTheme} from 'styled-components'
+import PropTypes from 'prop-types'
 
 const LogoStyled = styled.svg`
   display: block;
@@ -18,5 +19,10 @@ const Logo = (props) => (
     </g>
   </LogoStyled>
 )
+
+Logo.propTypes = {
+  theme: PropTypes.object.isRequired
+}
+
 
 export default withTheme(Logo)

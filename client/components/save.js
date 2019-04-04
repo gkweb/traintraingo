@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 import {Save as SaveIcon, Unsave} from './icon'
 
 const ButtonElem = styled.button`
@@ -64,6 +65,11 @@ const Save = ({isSaved, handler}) => {
       <Text>{isSaved ? 'unsave' : 'save'}</Text>
     </ButtonElem>
   )
+}
+
+Save.propTypes = {
+  handler: PropTypes.func.isRequired,
+  isSaved: PropTypes.bool.isRequired
 }
 
 export default Save

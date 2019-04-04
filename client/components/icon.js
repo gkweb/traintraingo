@@ -6,7 +6,7 @@ const IconElem = styled.svg`
   height: auto;
   fill: currentColor;
   stroke: currentColor;
-  max-width: 1em;
+  max-width: 3em;
 `
 
 const Chevron = (props) => (
@@ -39,11 +39,25 @@ const Unsave = (props) => (
   </IconElem>
 )
 
+const Menu = (props) => (
+  <IconElem viewBox="0 0 24 24" className={props.className} style={props.style}>
+    <path d="M3 13h18c0.552 0 1-0.448 1-1s-0.448-1-1-1h-18c-0.552 0-1 0.448-1 1s0.448 1 1 1zM3 7h18c0.552 0 1-0.448 1-1s-0.448-1-1-1h-18c-0.552 0-1 0.448-1 1s0.448 1 1 1zM3 19h18c0.552 0 1-0.448 1-1s-0.448-1-1-1h-18c-0.552 0-1 0.448-1 1s0.448 1 1 1z"></path>
+  </IconElem>
+)
+
+const Close = (props) => (
+  <IconElem viewBox="0 0 24 24" className={props.className} style={props.style}>
+    <path d="M18.984 6.422l-5.578 5.578 5.578 5.578-1.406 1.406-5.578-5.578-5.578 5.578-1.406-1.406 5.578-5.578-5.578-5.578 1.406-1.406 5.578 5.578 5.578-5.578z"></path>
+  </IconElem>
+)
+
 export {
   IconElem,
   Chevron,
   Search,
   Bookmark,
   Save,
-  Unsave
+  Unsave,
+  Menu,
+  Close
 }

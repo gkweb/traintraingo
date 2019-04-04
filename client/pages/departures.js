@@ -81,7 +81,7 @@ const Stop = (props) => (
               <DepartureItemElem key={index}>
                 <Departure directionName={departure.direction_name} platformNumber={departure.platform_number} scheduledDep={departure.scheduled_departure_utc} estimatedDep={departure.estimated_departure_utc} disruptions={departure.disruptions}/>
               </DepartureItemElem>
-            )
+              )
             })}
           </DepartureUlElem>)
       } else {

@@ -9,6 +9,7 @@ import Main from './../components/main'
 import Logo from './../components/logo'
 import Favourites from './../components/favourites'
 import Search from './../components/search'
+import Menu from './../components/menu'
 
 const StopButtonElem = styled.a`
   display: block;
@@ -26,6 +27,12 @@ const StopButtonElem = styled.a`
   }
 `
 
+const MainElem = styled(Main)`
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+`
+
 const StopContainerElem = styled.div`
   padding-bottom: 2em;
   margin-top: 1em;
@@ -39,14 +46,24 @@ const StopResultsTitle = styled.h3`
 const DescriptionElem = styled.p`
   color: ${props => props.theme.primary};
   text-align: center;
-  font-size: 1.25em;
+  font-size: 1em;
   margin-bottom: 0;
+
+  @media screen and (min-width: 50em) {
+    font-size: 1.25em;
+  }
 `
 
 const LogoContainer = styled.div`
-  padding: 3em 1em 0;
-  margin: 0 auto 3em;
-  max-width: 15em;
+  padding: 1em 1em 0;
+  margin: 0 auto 1em;
+  max-width: 10em;
+
+  @media screen and (min-width: 50em) {
+    padding: 3em 1em 0;
+    max-width: 15em;
+    margin: 0 auto 3em;
+  }
 `
 
 const ContentElem = styled.div`
@@ -57,8 +74,11 @@ const ContentElem = styled.div`
 `
 
 const TopContentElem = styled.div`
-  min-height: 60vh;
   padding-bottom: 1em;
+
+  @media screen and (min-width: 50em) {
+    min-height: 60vh;
+  }
 `
 
 const StopsLoadingTextElem = styled.p`
@@ -98,7 +118,7 @@ export default class App extends React.Component {
         description: 'Train train go'
       }}
       />
-      <Main>
+      <MainElem>
         <TopContentElem>
           <LogoContainer>
             <Logo />
@@ -109,7 +129,8 @@ export default class App extends React.Component {
           </ContentElem>
         </TopContentElem>
         <Favourites />
-      </Main>
+      </MainElem>
+      <Menu />
     </PageContainer>
     )
   }
