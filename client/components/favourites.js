@@ -29,6 +29,7 @@ const FavoriteLinkElem = styled.a`
   color: ${props => props.theme.inversePrimary};
   text-decoration: none;
   transition: transform .125s ease;
+  font-size: .75em;
 
   &:hover,
   &:focus {
@@ -39,6 +40,10 @@ const FavoriteLinkElem = styled.a`
     margin-left: .5em;
     max-width: 1em;
     color: ${props => props.theme.highlightPrimary};
+  }
+
+  @media screen and (min-width: 50em) {
+    font-size: 1em;
   }
 `
 

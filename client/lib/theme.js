@@ -59,11 +59,39 @@ const themes = {
 
 const ThemeManagementContext = React.createContext({
     activeTheme: themes.light.name,
-    theme: themes.light // default value
+    theme: themes.light, // default value
+    updateTheme: () => {}
   }
 )
 
+class ThemeManagementProvider extends Component {
+  constructor() {
+    super()
+    this.state = {
+      activeTheme: 'light',
+      theme: themes.light,
+      updateTheme: (theme) => {
+        this.setState(prevState => ({
+          ...prevState,
+          'activeTheme': theme.name,
+          'theme': theme
+        }))
+      }
+    }
+  }
+
+  render () {
+    const {children} = this.props
+    return (
+      <ThemeManagementContext.Provider value={this.state}>
+        {children}
+      </ThemeManagementContext.Provider>
+    )
+  }
+} 
+
 export {
   themes,
-  ThemeManagementContext
+  ThemeManagementContext,
+  ThemeManagementProvider
 }
