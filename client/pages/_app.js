@@ -8,6 +8,7 @@ import {createGlobalStyle, ThemeProvider} from 'styled-components'
 const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
+    transition: color, background-color, border-color .25s ease; 
   }
 `
 

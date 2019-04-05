@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 const SearchInput = styled.input`
 box-sizing: border-box;
 width: 100%;
-padding: 1em;
+padding: .5em 1em;
 background-color: ${props => props.theme.inputBg};
 border: 1px solid ${props => props.theme.inputBorder};
 color: ${props => props.theme.input};

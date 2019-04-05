@@ -118,6 +118,7 @@ export default class App extends React.Component {
         description: 'Train train go'
       }}
       />
+      <Menu />
       <MainElem>
         <TopContentElem>
           <LogoContainer>
@@ -130,7 +131,6 @@ export default class App extends React.Component {
         </TopContentElem>
         <Favourites />
       </MainElem>
-      <Menu />
     </PageContainer>
     )
   }

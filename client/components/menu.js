@@ -4,6 +4,13 @@ import {Menu as MenuIcon, Close as CloseIcon} from './icon'
 import {H3, P} from './text'
 import {themes, ThemeManagementProvider, ThemeManagementContext} from './../lib/theme'
 
+const MenuTitleElem = styled.h2`
+  font-size: 1em;
+  margin: 0 0 .5rem;
+  font-weight: normal;
+  color: ${props => props.theme.primary};
+`
+
 const MenuContainerOverlayElem = styled.div`
   position: fixed;
   top: 0;
@@ -54,13 +61,25 @@ const ThemeToggleElem = styled.button`
   background: none;
   border: 0;
   border-radius: 50%;
-  width: 2em;
-  height: 2em;
-  background: linear-gradient(90deg, ${props => props.bgColor}, ${props => props.bgColor} 75%, ${props => props.borderColor} 76%, ${props => props.borderColor} 100%);
+  width: 1.5em;
+  height: 1.5em;
+  background: linear-gradient(45deg, ${props => props.bgColor}, ${props => props.bgColor} 60%, ${props => props.borderColor} 61%, ${props => props.borderColor} 100%);
   border: 1px solid ${props => props.theme.primary};
-  box-shadow: -.0625em .125em .5em -.125em ${props => props.theme.inverseBg};
   text-indent: -999em;
-  margin-left: .5em;
+  margin-right: .5em;
+  position: relative;
+
+  &:after {
+    content: ' ';
+    display: block;
+    top: -3px;
+    left: -3px;
+    bottom: -3px;
+    right: -3px;
+    position: absolute;
+    border-radius: 50%;
+    ${props => ((props.isActive === true) ? (`border: 1px solid ${props.theme.primary};`) : null )}
+  }
   `
 
 class Menu extends Component {
@@ -82,14 +101,14 @@ class Menu extends Component {
         this.state.isOpen ? <MenuContainerElem>
         <MenuContainerOverlayElem onClick={() => (this.setState({isOpen: false}))}/>
         <MenuNavElem>
-          <H3>Settings</H3>
+          <MenuTitleElem>Settings</MenuTitleElem>
           <P>Theme</P>
           <ThemeManagementContext.Consumer>
             {(context) => (
               <>
                 {
                   Object.keys(themes).map((val, index) => (
-                    <ThemeToggleElem key={index} bgColor={themes[val].values.primaryBg} borderColor={themes[val].values.primary} onClick={() => context.updateTheme(themes[val])}><span>{val}</span></ThemeToggleElem>
+                    <ThemeToggleElem key={index} bgColor={themes[val].values.primaryBg} borderColor={themes[val].values.primary} isActive={(context.activeTheme === val)} onClick={() => context.updateTheme(themes[val])}><span>{val}</span></ThemeToggleElem>
                   ))
                 }
               </>
