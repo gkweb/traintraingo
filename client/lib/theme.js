@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {setCookie} from 'nookies'
 
 const themes = {
   light: {
@@ -76,8 +77,13 @@ class ThemeManagementProvider extends Component {
           'activeTheme': theme.name,
           'theme': theme
         }))
+        setCookie({}, 'activeTheme', theme.name)
       }
     }
+  }
+
+  componentWillMount () {
+    if (this.props.activeTheme && themes[this.props.activeTheme]) this.state.updateTheme(themes[this.props.activeTheme])
   }
 
   render () {
@@ -88,7 +94,7 @@ class ThemeManagementProvider extends Component {
       </ThemeManagementContext.Provider>
     )
   }
-} 
+}
 
 export {
   themes,

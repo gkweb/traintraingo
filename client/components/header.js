@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Logo from './../components/logo-no-text'
 import Save from './../components/save'
 import Link from 'next/link'
-import { updateItem, removeItem, getItem } from './../lib/local-storage'
+import { updateItem, removeItem, getItem } from './../lib/fav-local-storage'
 
 const HeaderElem = styled.header`
   display: flex;

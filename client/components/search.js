@@ -29,12 +29,17 @@ position: relative;
 
 const SearchIconElem = styled(SearchIcon)`
 position: absolute;
-right: 1em;
+right: .5em;
 top: 50%;
 transform: translateY(-50%);
-max-width: 1.75em;
+max-width: 1.25em;
 fill: ${props => props.theme.inputIcon};
 stroke: rgba(255, 255, 255, 0);
+
+@media screen and (min-width: 50em) {
+  max-width: 1.75em;
+  right: 1em;
+}
 `
 
 class Search extends React.Component {

@@ -56,7 +56,7 @@ const DescriptionElem = styled.p`
 
 const LogoContainer = styled.div`
   padding: 1em 1em 0;
-  margin: 0 auto 1em;
+  margin: 1.5em auto 1em;
   max-width: 10em;
 
   @media screen and (min-width: 50em) {
