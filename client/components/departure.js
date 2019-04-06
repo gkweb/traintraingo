@@ -56,7 +56,7 @@ const Departure = ({lineName, directionName, platformNumber, scheduledDep, estim
 Departure.propTypes = {
   lineName: PropTypes.string,
   directionName: PropTypes.string,
-  platformNumber: PropTypes.string,
+  platformNumber: PropTypes.number,
   scheduledDep: PropTypes.string,
   estimatedDep: PropTypes.string,
   disruptions: PropTypes.array

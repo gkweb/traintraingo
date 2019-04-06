@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {setCookie} from 'nookies'
+import {setCookie, destroyCookie} from 'nookies'
 
 const themes = {
   light: {
@@ -77,6 +77,7 @@ class ThemeManagementProvider extends Component {
           'activeTheme': theme.name,
           'theme': theme
         }))
+        destroyCookie({}, 'activeTheme')
         setCookie({}, 'activeTheme', theme.name)
       }
     }

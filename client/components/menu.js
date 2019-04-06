@@ -39,20 +39,18 @@ const MenuNavElem = styled.nav`
 `
 
 const MenuToggleElem = styled.button`
+  display: block;
   padding: .5em;
-  width: 2em;
-  position: fixed;
-  top: 1em;
-  right: 1em;
-  z-index: 301;
+  width: 1.5em;
   background: none;
   padding: 0;
   border: 0;
-  color: ${props => props.theme.secondary}
+  color: ${props => props.theme.secondary};
+  ${props => (props.alignRight === true ? 'margin-left: auto;': null)}
 `
 
-const MenuToggle = ({onClick, isOpen}) => (
-  <MenuToggleElem onClick={onClick}>
+const MenuToggle = ({onClick, isOpen, alignRight}) => (
+  <MenuToggleElem onClick={onClick} alignRight={alignRight}>
     {isOpen ? <CloseIcon />: <MenuIcon />}
   </MenuToggleElem>
 )
@@ -101,6 +99,9 @@ class Menu extends Component {
         this.state.isOpen ? <MenuContainerElem>
         <MenuContainerOverlayElem onClick={() => (this.setState({isOpen: false}))}/>
         <MenuNavElem>
+          <MenuToggle alignRight={true} isOpen={this.state.isOpen} onClick={
+            () => this.setState((prevState) => ({...prevState, isOpen: !prevState.isOpen}))
+          }/>
           <MenuTitleElem>Settings</MenuTitleElem>
           <P>Theme</P>
           <ThemeManagementContext.Consumer>

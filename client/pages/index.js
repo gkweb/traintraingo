@@ -50,7 +50,7 @@ const DescriptionElem = styled.p`
   margin-bottom: 0;
 
   @media screen and (min-width: 50em) {
-    font-size: 1.25em;
+    font-size: 1.125em;
   }
 `
 
@@ -68,9 +68,13 @@ const LogoContainer = styled.div`
 
 const ContentElem = styled.div`
   width: 100%;
-  max-width: 50em;
-  padding: 0 1em; 
+  max-width: 25em;
+  padding: 0 1em;
   margin: 0 auto;
+
+  @media screen and (min-width: 50em) {
+    max-width: 38em;
+  }
 `
 
 const TopContentElem = styled.div`
@@ -79,6 +83,13 @@ const TopContentElem = styled.div`
   @media screen and (min-width: 50em) {
     min-height: 60vh;
   }
+`
+
+const TopMenuContainerElem = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  padding: 1em;
 `
 
 const StopsLoadingTextElem = styled.p`
@@ -118,15 +129,17 @@ export default class App extends React.Component {
         description: 'Train train go'
       }}
       />
-      <Menu />
       <MainElem>
+        <TopMenuContainerElem>
+          <Menu />
+        </TopMenuContainerElem>
         <TopContentElem>
           <LogoContainer>
             <Logo />
           </LogoContainer>
           <ContentElem>
             <Search onSubmit={event => (event.preventDefault())} onChange={this.handleSearch} initialRun={this.state.initialRun}/>
-            {(this.state.search.length > 2) ? <Stops search_term={this.state.search} /> : <DescriptionElem>Melbourne, Australia train times with no bloat. Search, Select, then View departures.</DescriptionElem>}
+            {(this.state.search.length > 2) ? <Stops search_term={this.state.search} /> : <DescriptionElem>Melbourne, Australia PTV train departures with no bloat.</DescriptionElem>}
           </ContentElem>
         </TopContentElem>
         <Favourites />
@@ -148,7 +161,7 @@ const Stops = (props) => {
     `}
   >
     {({ loading, error, data }) => {
-      if (error) return <p>Error :({console.log(error)}</p>
+      if (error) return <p>Error :(</p>
       if (loading && (props.search_term && props.search_term.length >= 2)) return (<StopsLoadingTextElem>Loading...</StopsLoadingTextElem>)
       if (!data.stops) return null
       if (data.stops && data.stops.length <= 0) return null

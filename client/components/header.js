@@ -70,7 +70,7 @@ class Header extends React.Component {
   }
 
   componentDidMount() {
-    const isSaved = (getItem(this.props.stopId))
+    const isSaved = (typeof getItem(this.props.stopId) === 'string')
 
     this.setState({
       isSaved: isSaved,

@@ -13,7 +13,7 @@ border-radius: .25em;
 font-size: 1em;
 
 @media screen and (min-width: 50em) {
-  padding: 1em;
+  padding: .75em 1em;
   font-size: 1.1em;
 }
 
