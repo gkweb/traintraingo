@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {Search as SearchIcon} from './../components/icon'
+import {SearchIcon} from './../components/icon'
 import PropTypes from 'prop-types'
 
 const SearchInput = styled.input`
@@ -27,7 +27,7 @@ display: block;
 position: relative;
 `
 
-const SearchIconElem = styled(SearchIcon)`
+const SearchIconElem = styled((props) => <SearchIcon {...props}/>)`
 position: absolute;
 right: .5em;
 top: 50%;

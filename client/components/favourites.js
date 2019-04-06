@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import {H4} from './text'
 import {getItems} from './../lib/fav-local-storage'
-import {Bookmark} from './icon'
+import {BookmarkIcon} from './icon'
 
 const FavoriteListElem = styled.ul`
   display: flex;
@@ -82,7 +82,7 @@ class Favourites extends React.Component {
             <Link href={`/departures/${val}`} as={`/departures/${val}`} passHref>
               <FavoriteLinkElem>
                 <span>{this.state.favourites[val]}</span>
-                <span><Bookmark/></span>
+                <span><BookmarkIcon/></span>
               </FavoriteLinkElem>
             </Link>
         </FavoriteItemElem>

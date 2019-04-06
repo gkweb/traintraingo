@@ -30,7 +30,7 @@ const StopButtonElem = styled.a`
 const MainElem = styled(Main)`
   display: flex;
   flex-flow: column wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
 `
 
 const StopContainerElem = styled.div`

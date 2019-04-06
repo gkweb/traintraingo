@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import styled from 'styled-components'
-import {Menu as MenuIcon, Close as CloseIcon} from './icon'
+import {MenuIcon, CloseIcon} from './icon'
 import {H3, P} from './text'
 import {themes, ThemeManagementProvider, ThemeManagementContext} from './../lib/theme'
 

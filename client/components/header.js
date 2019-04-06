@@ -36,7 +36,7 @@ const TitleElem = styled.h1`
 `
 
 const LogoContainer = styled.div`
-  max-width: 4em;
+  max-width: 3em;
   margin: 0;
 
   @media screen and (max-width: 50em) {

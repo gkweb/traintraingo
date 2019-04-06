@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import {Save as SaveIcon, Unsave} from './icon'
+import {SaveIcon, UnsaveIcon} from './icon'
 
 const ButtonElem = styled.button`
   display: block;
@@ -61,7 +61,7 @@ const IconContainerUnsaveElem = styled.span`
 const Save = ({isSaved, handler}) => {
   return (
     <ButtonElem onClick={handler}>
-      {isSaved ? <SaveIcon style={{fill: '#EEDB57', stroke: '#EEDB57'}}/> : <Unsave/>}
+      {isSaved ? <SaveIcon style={{fill: '#EEDB57', stroke: '#EEDB57'}}/> : <UnsaveIcon/>}
       <Text>{isSaved ? 'unsave' : 'save'}</Text>
     </ButtonElem>
   )
