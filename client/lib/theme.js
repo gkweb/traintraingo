@@ -78,7 +78,9 @@ class ThemeManagementProvider extends Component {
           'theme': theme
         }))
         destroyCookie({}, 'activeTheme')
-        setCookie({}, 'activeTheme', theme.name)
+        setCookie({}, 'activeTheme', theme.name, {
+          path: '/'
+        })
       }
     }
   }
