@@ -49,11 +49,11 @@ const FavoriteLinkElem = styled.a`
 
 const FavouritesContainerElem = styled.section`
   padding: 1em 1em 4em;
+  margin-top: auto;
   background-color: ${props => props.theme.primaryBg};
 
   @media screen and (min-width: 50em) {
     padding: 1em 1em 4em;
-    margin-top: 3em;
   }
 `
 

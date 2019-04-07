@@ -78,7 +78,7 @@ const ContentElem = styled.div`
 `
 
 const TopContentElem = styled.div`
-  padding-bottom: 1em;
+  padding-bottom: 3em;
 
   @media screen and (min-width: 50em) {
     min-height: 60vh;
