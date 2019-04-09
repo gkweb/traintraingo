@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import {SaveIcon, UnsaveIcon} from './icon'
+import { SaveIcon, UnsaveIcon } from './icon'
 
 const ButtonElem = styled.button`
   display: block;
@@ -8,14 +8,14 @@ const ButtonElem = styled.button`
   height: 1em;
   border: 0;
   padding: 0;
-  margin: 0 .25em 0;
+  margin: 0 0.25em 0;
   background: none;
   font-size: 1em;
   color: ${props => props.theme.primary};
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: .125s transform ease;
+  transition: 0.125s transform ease;
 
   &:focus {
     outline: 0;
@@ -29,7 +29,6 @@ const ButtonElem = styled.button`
   &:focus {
     overflow: visible;
     color: ${props => props.theme.highlightPrimary};
-    
   }
 
   &:hover > span,
@@ -40,9 +39,9 @@ const ButtonElem = styled.button`
 
 const Text = styled.span`
   display: block;
-  padding: .5em;
+  padding: 0.5em;
   position: absolute;
-  bottom: -.25em;
+  bottom: -0.25em;
   left: -999em;
   transform: translate(-50%, 100%);
   background-color: ${props => props.theme.tertiaryBg};
@@ -58,10 +57,14 @@ const IconContainerUnsaveElem = styled.span`
   fill: ${props => props.theme.highlightPrimary};
 `
 
-const Save = ({isSaved, handler}) => {
+const Save = ({ isSaved, handler }) => {
   return (
     <ButtonElem onClick={handler}>
-      {isSaved ? <SaveIcon style={{fill: '#EEDB57', stroke: '#EEDB57'}}/> : <UnsaveIcon/>}
+      {isSaved ? (
+        <SaveIcon style={{ fill: '#EEDB57', stroke: '#EEDB57' }} />
+      ) : (
+        <UnsaveIcon />
+      )}
       <Text>{isSaved ? 'unsave' : 'save'}</Text>
     </ButtonElem>
   )
@@ -69,7 +72,7 @@ const Save = ({isSaved, handler}) => {
 
 Save.propTypes = {
   handler: PropTypes.func.isRequired,
-  isSaved: PropTypes.bool.isRequired
+  isSaved: PropTypes.bool.isRequired,
 }
 
 export default Save

@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import {ChevronIcon} from './icon'
+import { ChevronIcon } from './icon'
 
 const ContainerElem = styled.div`
   display: flex;
@@ -11,26 +11,26 @@ const ContainerElem = styled.div`
 const ChevronIconElem = styled(ChevronIcon)`
   max-width: 1em;
   margin-left: auto;
-  transform: ${props => (props.isOpen ? 'rotate(-90deg)' : 'rotate(0)')}
+  transform: ${props => (props.isOpen ? 'rotate(-90deg)' : 'rotate(0)')};
 `
 
 const NoticeElem = styled.svg`
   display: block;
   width: 1.25em;
   height: 1.25em;
-  margin-right: .25em;
+  margin-right: 0.25em;
   fill: ${props => props.theme.highlightSecondary};
 `
 
 const TitleElem = styled.button`
   display: flex;
-  padding: .5em;
+  padding: 0.5em;
   width: 100%;
   border: 0;
   margin: 0;
   font-size: 1em;
   font-weight: bold;
-  font-family:'Lustria', serif;
+  font-family: 'Lustria', serif;
   color: ${props => props.theme.inversePrimary};
   background: none;
   position: relative;
@@ -57,13 +57,13 @@ const DisruptionItemElem = styled.li`
 
 const DisruptionTitleElem = styled.span`
   display: block;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
   font-weight: bold;
 `
 
 const DisruptionDescElem = styled.span`
   display: block;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 `
 
 const DisruptionReadMoreElem = styled.a`
@@ -75,15 +75,15 @@ class Disruption extends React.Component {
   constructor() {
     super()
     this.state = {
-      visible: false
+      visible: false,
     }
 
     this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick (event) {
+  handleClick(event) {
     // Toggle
-    this.setState({visible: !this.state.visible})
+    this.setState({ visible: !this.state.visible })
   }
 
   render() {
@@ -92,31 +92,42 @@ class Disruption extends React.Component {
 
     if (this.props.disruptionData && this.props.disruptionData.length > 0) {
       if (this.state.visible) {
-        content = <ContentElem>
-          <DisruptionListElem>
-          {this.props.disruptionData.map((val, index) => (
-            <DisruptionItemElem key={index}>
-              <DisruptionTitleElem>{val.title}</DisruptionTitleElem>
-              <DisruptionDescElem>{val.description}
-                {val.url ? <DisruptionReadMoreElem href={val.url} colour={val.colour}>Read more</DisruptionReadMoreElem> : null}
-              </DisruptionDescElem>
-            </DisruptionItemElem>
-            )
-          )}
-          </DisruptionListElem>
-        </ContentElem>
+        content = (
+          <ContentElem>
+            <DisruptionListElem>
+              {this.props.disruptionData.map((val, index) => (
+                <DisruptionItemElem key={index}>
+                  <DisruptionTitleElem>{val.title}</DisruptionTitleElem>
+                  <DisruptionDescElem>
+                    {val.description}
+                    {val.url ? (
+                      <DisruptionReadMoreElem
+                        href={val.url}
+                        colour={val.colour}
+                      >
+                        Read more
+                      </DisruptionReadMoreElem>
+                    ) : null}
+                  </DisruptionDescElem>
+                </DisruptionItemElem>
+              ))}
+            </DisruptionListElem>
+          </ContentElem>
+        )
       }
 
-      d = <ContainerElem>
-      <TitleElem onClick={this.handleClick}>
-        <NoticeElem viewBox="0 0 32 32">
-          <path d="M15.5 3c-7.456 0-13.5 6.044-13.5 13.5s6.044 13.5 13.5 13.5 13.5-6.044 13.5-13.5-6.044-13.5-13.5-13.5zM15.5 27c-5.799 0-10.5-4.701-10.5-10.5s4.701-10.5 10.5-10.5 10.5 4.701 10.5 10.5-4.701 10.5-10.5 10.5zM15.5 10c-0.828 0-1.5 0.671-1.5 1.5v5.062c0 0.828 0.672 1.5 1.5 1.5s1.5-0.672 1.5-1.5v-5.062c0-0.829-0.672-1.5-1.5-1.5zM15.5 20c-0.828 0-1.5 0.672-1.5 1.5s0.672 1.5 1.5 1.5 1.5-0.672 1.5-1.5-0.672-1.5-1.5-1.5z"></path>
-        </NoticeElem>
-        <TitleTextElem>Possible disruption</TitleTextElem>
-        <ChevronIconElem isOpen={this.state.visible}/>
-      </TitleElem>
-      {content}
-    </ContainerElem>
+      d = (
+        <ContainerElem>
+          <TitleElem onClick={this.handleClick}>
+            <NoticeElem viewBox="0 0 32 32">
+              <path d="M15.5 3c-7.456 0-13.5 6.044-13.5 13.5s6.044 13.5 13.5 13.5 13.5-6.044 13.5-13.5-6.044-13.5-13.5-13.5zM15.5 27c-5.799 0-10.5-4.701-10.5-10.5s4.701-10.5 10.5-10.5 10.5 4.701 10.5 10.5-4.701 10.5-10.5 10.5zM15.5 10c-0.828 0-1.5 0.671-1.5 1.5v5.062c0 0.828 0.672 1.5 1.5 1.5s1.5-0.672 1.5-1.5v-5.062c0-0.829-0.672-1.5-1.5-1.5zM15.5 20c-0.828 0-1.5 0.672-1.5 1.5s0.672 1.5 1.5 1.5 1.5-0.672 1.5-1.5-0.672-1.5-1.5-1.5z" />
+            </NoticeElem>
+            <TitleTextElem>Possible disruption</TitleTextElem>
+            <ChevronIconElem isOpen={this.state.visible} />
+          </TitleElem>
+          {content}
+        </ContainerElem>
+      )
     }
 
     return d
@@ -124,7 +135,7 @@ class Disruption extends React.Component {
 }
 
 Disruption.propTypes = {
-  disruptionData: PropTypes.array
+  disruptionData: PropTypes.array,
 }
 
 export default Disruption

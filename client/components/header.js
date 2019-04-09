@@ -12,7 +12,7 @@ const HeaderElem = styled.header`
   padding: 2em 1em;
   width: 100%;
   height: 4em;
-  border-bottom: 1px solid rgba(0, 0, 0, .25);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   background-color: ${props => props.theme.primaryBg};
   margin-bottom: 1em;
   position: fixed;
@@ -26,7 +26,7 @@ const HeaderElem = styled.header`
 `
 
 const TitleElem = styled.h1`
-  margin: 0 0 0 .5em;
+  margin: 0 0 0 0.5em;
   color: ${props => props.theme.primary};
   font-size: 1.25em;
 
@@ -49,7 +49,7 @@ class Header extends React.Component {
     super()
     this.state = {
       isSaved: false,
-      clientReady: false
+      clientReady: false,
     }
 
     this.handleSave = this.handleSave.bind(this)
@@ -57,7 +57,7 @@ class Header extends React.Component {
 
   handleSave(event) {
     this.setState({
-      isSaved: !this.state.isSaved
+      isSaved: !this.state.isSaved,
     })
 
     if (this.state.isSaved) {
@@ -70,39 +70,40 @@ class Header extends React.Component {
   }
 
   componentDidMount() {
-    const isSaved = (typeof getItem(this.props.stopId) === 'string')
+    const isSaved = typeof getItem(this.props.stopId) === 'string'
 
     this.setState({
       isSaved: isSaved,
-      clientReady: true
+      clientReady: true,
     })
   }
 
   render() {
-    const {
-      headerTitle,
-      isLoading
-    } = this.props
+    const { headerTitle, isLoading } = this.props
 
     return (
       <HeaderElem>
-      <Link href='/' passHref prefetch>
-        <a>
-          <LogoContainer>
-            <Logo />
-          </LogoContainer>
-        </a>
-      </Link>
-      {(headerTitle && !isLoading) ? <TitleElem>{headerTitle}</TitleElem> : null}
-      {!isLoading ? <Save isSaved={this.state.isSaved} handler={this.handleSave} /> : null }
-    </HeaderElem>
+        <Link href="/" passHref prefetch>
+          <a>
+            <LogoContainer>
+              <Logo />
+            </LogoContainer>
+          </a>
+        </Link>
+        {headerTitle && !isLoading ? (
+          <TitleElem>{headerTitle}</TitleElem>
+        ) : null}
+        {!isLoading ? (
+          <Save isSaved={this.state.isSaved} handler={this.handleSave} />
+        ) : null}
+      </HeaderElem>
     )
   }
 }
 
 Header.propTypes = {
   headerTitle: PropTypes.string.isRequired,
-  isLoading: PropTypes.bool.isRequired
+  isLoading: PropTypes.bool.isRequired,
 }
 
 export default Header

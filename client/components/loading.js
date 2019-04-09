@@ -1,4 +1,4 @@
-import styled, {keyframes} from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import Logo from './../components/logo-no-text'
 
 const LoadingAnim = keyframes`
@@ -24,10 +24,10 @@ const LoadingContainerElem = styled.div`
 
 const LogoContainerElem = styled.div`
   max-width: 4em;
-  margin: 0 auto .5em;
+  margin: 0 auto 0.5em;
   animation: ${LoadingAnim} 1s linear 1.2s infinite alternate;
   animation-fill-mode: both;
-  `
+`
 
 const LoadingTextElem = styled.h1`
   margin: 0;
@@ -38,7 +38,9 @@ const LoadingTextElem = styled.h1`
 
 const Loading = () => (
   <LoadingContainerElem>
-    <LogoContainerElem><Logo /></LogoContainerElem>
+    <LogoContainerElem>
+      <Logo />
+    </LogoContainerElem>
     <LoadingTextElem>Loading...</LoadingTextElem>
   </LoadingContainerElem>
 )

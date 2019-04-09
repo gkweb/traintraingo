@@ -1,18 +1,18 @@
-import {Component} from 'react'
+import { Component } from 'react'
 import styled from 'styled-components'
-import {MenuIcon, CloseIcon} from './icon'
-import {themes, ThemeManagementContext} from './../lib/theme'
+import { MenuIcon, CloseIcon } from './icon'
+import { themes, ThemeManagementContext } from './../lib/theme'
 
 const MenuTitleElem = styled.h2`
   font-size: 1em;
-  margin: 0 0 .5rem;
+  margin: 0 0 0.5rem;
   font-weight: normal;
   color: ${props => props.theme.primary};
 `
 
 const MenuTitleSubElem = styled.h3`
   font-size: 1em;
-  margin: 0 0 .5rem;
+  margin: 0 0 0.5rem;
   font-weight: normal;
   color: ${props => props.theme.primary};
 `
@@ -37,27 +37,25 @@ const MenuContainerElem = styled.div`
   overflow-y: auto;
   z-index: 300;
   background-color: ${props => props.theme.primaryBg};
-  box-shadow: -.0625em .125em .5em -.125em rgba(0,0,0,.125);
+  box-shadow: -0.0625em 0.125em 0.5em -0.125em rgba(0, 0, 0, 0.125);
 `
 
-const MenuNavElem = styled.nav`
-
-`
+const MenuNavElem = styled.nav``
 
 const MenuToggleElem = styled.button`
   display: block;
-  padding: .5em;
+  padding: 0.5em;
   width: 1.5em;
   background: none;
   padding: 0;
   border: 0;
   color: ${props => props.theme.secondary};
-  ${props => (props.alignRight === true ? 'margin-left: auto;': null)}
+  ${props => (props.alignRight === true ? 'margin-left: auto;' : null)}
 `
 
-const MenuToggle = ({onClick, isOpen, alignRight}) => (
+const MenuToggle = ({ onClick, isOpen, alignRight }) => (
   <MenuToggleElem onClick={onClick} alignRight={alignRight}>
-    {isOpen ? <CloseIcon />: <MenuIcon />}
+    {isOpen ? <CloseIcon /> : <MenuIcon />}
   </MenuToggleElem>
 )
 
@@ -67,11 +65,17 @@ const ThemeToggleElem = styled.button`
   border: 0;
   width: 20px; /* IOS Safari only like px here :( */
   height: 20px;
-  background: linear-gradient(45deg, ${props => props.bgColor}, ${props => props.bgColor} 60%, ${props => props.borderColor} 61%, ${props => props.borderColor} 100%);
+  background: linear-gradient(
+    45deg,
+    ${props => props.bgColor},
+    ${props => props.bgColor} 60%,
+    ${props => props.borderColor} 61%,
+    ${props => props.borderColor} 100%
+  );
   border: 1px solid ${props => props.theme.primary};
   border-radius: 50%;
   text-indent: -999em;
-  margin-right: .5em;
+  margin-right: 0.5em;
   position: relative;
 
   &:after {
@@ -82,48 +86,71 @@ const ThemeToggleElem = styled.button`
     bottom: -3px;
     right: -3px;
     position: absolute;
-    ${props => ((props.isActive === true) ? (`border: 1px solid ${props.theme.primary};`) : null )}
     border-radius: 50%;
+    ${props =>
+      props.isActive === true
+        ? `border: 1px solid ${props.theme.primary};`
+        : null}
   }
-  `
+`
 
 class Menu extends Component {
   constructor() {
     super()
 
     this.state = {
-      isOpen: false
+      isOpen: false,
     }
   }
 
   render() {
     return (
       <>
-      <MenuToggle isOpen={this.state.isOpen} onClick={
-        () => this.setState((prevState) => ({...prevState, isOpen: !prevState.isOpen}))
-      }/>
-      {
-        this.state.isOpen ? <MenuContainerElem>
-        <MenuContainerOverlayElem onClick={() => (this.setState({isOpen: false}))}/>
-        <MenuNavElem>
-          <MenuToggle alignRight={true} isOpen={this.state.isOpen} onClick={
-            () => this.setState((prevState) => ({...prevState, isOpen: !prevState.isOpen}))
-          }/>
-          <MenuTitleElem>Settings</MenuTitleElem>
-          <ThemeManagementContext.Consumer>
-            {(context) => (
-              <>
-                {
-                  Object.keys(themes).map((val, index) => (
-                    <ThemeToggleElem key={index} bgColor={themes[val].values.primaryBg} borderColor={themes[val].values.primary} isActive={(context.activeTheme === val)} onClick={() => context.updateTheme(themes[val])} aria-label={`${val} theme`}></ThemeToggleElem>
-                  ))
+        <MenuToggle
+          isOpen={this.state.isOpen}
+          onClick={() =>
+            this.setState(prevState => ({
+              ...prevState,
+              isOpen: !prevState.isOpen,
+            }))
+          }
+        />
+        {this.state.isOpen ? (
+          <MenuContainerElem>
+            <MenuContainerOverlayElem
+              onClick={() => this.setState({ isOpen: false })}
+            />
+            <MenuNavElem>
+              <MenuToggle
+                alignRight={true}
+                isOpen={this.state.isOpen}
+                onClick={() =>
+                  this.setState(prevState => ({
+                    ...prevState,
+                    isOpen: !prevState.isOpen,
+                  }))
                 }
-              </>
-            )}
-          </ThemeManagementContext.Consumer>
-        </MenuNavElem>
-      </MenuContainerElem> : null
-      }
+              />
+              <MenuTitleElem>Settings</MenuTitleElem>
+              <ThemeManagementContext.Consumer>
+                {context => (
+                  <>
+                    {Object.keys(themes).map((val, index) => (
+                      <ThemeToggleElem
+                        key={index}
+                        bgColor={themes[val].values.primaryBg}
+                        borderColor={themes[val].values.primary}
+                        isActive={context.activeTheme === val}
+                        onClick={() => context.updateTheme(themes[val])}
+                        aria-label={`${val} theme`}
+                      />
+                    ))}
+                  </>
+                )}
+              </ThemeManagementContext.Consumer>
+            </MenuNavElem>
+          </MenuContainerElem>
+        ) : null}
       </>
     )
   }

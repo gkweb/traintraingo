@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const ButtonElem = styled.button`
+export const ButtonElem = styled.button `
   display: block;
   box-sizing: border-box;
   background-color: ${props => props.theme.secondaryBg};

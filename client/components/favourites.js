@@ -1,20 +1,20 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
-import {H4} from './text'
-import {getItems} from './../lib/fav-local-storage'
-import {BookmarkIcon} from './icon'
+import { H4 } from './text'
+import { getItems } from './../lib/fav-local-storage'
+import { BookmarkIcon } from './icon'
 
 const FavoriteListElem = styled.ul`
   display: flex;
   flex-flow: row wrap;
-  margin: 0 0 0 -.5em;
+  margin: 0 0 0 -0.5em;
   padding: 0;
 `
 
 const FavoriteItemElem = styled.li`
   display: inline-flex;
-  margin: .5em;
+  margin: 0.5em;
 `
 
 const FavoriteLinkElem = styled.a`
@@ -25,11 +25,11 @@ const FavoriteLinkElem = styled.a`
   padding: 1em;
   border: 1px solid ${props => props.theme.tertiaryBg};
   background: ${props => props.theme.inversePrimaryBg};
-  box-shadow: -.0625em .125em .5em -.125em rgba(0,0,0,.125);
+  box-shadow: -0.0625em 0.125em 0.5em -0.125em rgba(0, 0, 0, 0.125);
   color: ${props => props.theme.inversePrimary};
   text-decoration: none;
-  transition: transform .125s ease;
-  font-size: .75em;
+  transition: transform 0.125s ease;
+  font-size: 0.75em;
 
   &:hover,
   &:focus {
@@ -37,7 +37,7 @@ const FavoriteLinkElem = styled.a`
   }
 
   span:last-child {
-    margin-left: .5em;
+    margin-left: 0.5em;
     max-width: 1em;
     color: ${props => props.theme.highlightPrimary};
   }
@@ -61,34 +61,45 @@ class Favourites extends React.Component {
   constructor() {
     super()
     this.state = {
-      favourites: {}
+      favourites: {},
     }
   }
 
   componentDidMount() {
     const favourites = getItems()
-    if (favourites) this.setState({favourites: favourites})
+    if (favourites) this.setState({ favourites: favourites })
   }
 
   render() {
     let r
 
-    if (this.state.favourites && Object.keys(this.state.favourites).length > 0) {
-      r = <FavouritesContainerElem>
-      <H4>Favourites</H4>
-      <FavoriteListElem>
-        {Object.keys(this.state.favourites).map((val, ind) => (
-          <FavoriteItemElem key={ind}>
-            <Link href={`/departures/${val}`} as={`/departures/${val}`} passHref>
-              <FavoriteLinkElem>
-                <span>{this.state.favourites[val]}</span>
-                <span><BookmarkIcon/></span>
-              </FavoriteLinkElem>
-            </Link>
-        </FavoriteItemElem>
-        ))}
-      </FavoriteListElem>
-      </FavouritesContainerElem>
+    if (
+      this.state.favourites &&
+      Object.keys(this.state.favourites).length > 0
+    ) {
+      r = (
+        <FavouritesContainerElem>
+          <H4>Favourites</H4>
+          <FavoriteListElem>
+            {Object.keys(this.state.favourites).map((val, ind) => (
+              <FavoriteItemElem key={ind}>
+                <Link
+                  href={`/departures/${val}`}
+                  as={`/departures/${val}`}
+                  passHref
+                >
+                  <FavoriteLinkElem>
+                    <span>{this.state.favourites[val]}</span>
+                    <span>
+                      <BookmarkIcon />
+                    </span>
+                  </FavoriteLinkElem>
+                </Link>
+              </FavoriteItemElem>
+            ))}
+          </FavoriteListElem>
+        </FavouritesContainerElem>
+      )
     } else {
       r = null
     }

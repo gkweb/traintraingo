@@ -1,11 +1,10 @@
-import App, {Container} from 'next/app'
+import App, { Container } from 'next/app'
 import React from 'react'
-import {ApolloProvider} from 'react-apollo'
+import { ApolloProvider } from 'react-apollo'
 import withApolloClient from './../lib/with-apollo-client'
-import {ThemeManagementProvider, ThemeManagementContext} from './../lib/theme'
-import {createGlobalStyle, ThemeProvider} from 'styled-components'
+import { ThemeManagementProvider, ThemeManagementContext } from './../lib/theme'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { parseCookies, setCookie, destroyCookie } from 'nookies'
-
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -19,7 +18,7 @@ class MyApp extends App {
     let pageProps = {}
 
     if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
+      pageProps = await Component.getInitialProps(ctx)
     }
 
     const cookies = parseCookies(ctx)
@@ -28,13 +27,13 @@ class MyApp extends App {
     return { pageProps, activeTheme }
   }
 
-  render () {
+  render() {
     const { Component, pageProps, apolloClient, activeTheme } = this.props
     return (
       <ThemeManagementProvider activeTheme={activeTheme}>
         <ThemeManagementContext.Consumer>
-            {
-              (context) => (<>
+          {context => (
+            <>
               <ThemeProvider theme={context.theme.values}>
                 <Container>
                   <GlobalStyle />
@@ -44,8 +43,7 @@ class MyApp extends App {
                 </Container>
               </ThemeProvider>
             </>
-            )
-          }
+          )}
         </ThemeManagementContext.Consumer>
       </ThemeManagementProvider>
     )
