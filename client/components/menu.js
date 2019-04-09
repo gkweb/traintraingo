@@ -1,10 +1,16 @@
 import {Component} from 'react'
 import styled from 'styled-components'
 import {MenuIcon, CloseIcon} from './icon'
-import {H3, P} from './text'
-import {themes, ThemeManagementProvider, ThemeManagementContext} from './../lib/theme'
+import {themes, ThemeManagementContext} from './../lib/theme'
 
 const MenuTitleElem = styled.h2`
+  font-size: 1em;
+  margin: 0 0 .5rem;
+  font-weight: normal;
+  color: ${props => props.theme.primary};
+`
+
+const MenuTitleSubElem = styled.h3`
   font-size: 1em;
   margin: 0 0 .5rem;
   font-weight: normal;
@@ -56,13 +62,14 @@ const MenuToggle = ({onClick, isOpen, alignRight}) => (
 )
 
 const ThemeToggleElem = styled.button`
+  display: inline-block;
   background: none;
   border: 0;
-  border-radius: 50%;
-  width: 1.5em;
-  height: 1.5em;
+  width: 20px; /* IOS Safari only like px here :( */
+  height: 20px;
   background: linear-gradient(45deg, ${props => props.bgColor}, ${props => props.bgColor} 60%, ${props => props.borderColor} 61%, ${props => props.borderColor} 100%);
   border: 1px solid ${props => props.theme.primary};
+  border-radius: 50%;
   text-indent: -999em;
   margin-right: .5em;
   position: relative;
@@ -75,8 +82,8 @@ const ThemeToggleElem = styled.button`
     bottom: -3px;
     right: -3px;
     position: absolute;
-    border-radius: 50%;
     ${props => ((props.isActive === true) ? (`border: 1px solid ${props.theme.primary};`) : null )}
+    border-radius: 50%;
   }
   `
 
@@ -103,13 +110,12 @@ class Menu extends Component {
             () => this.setState((prevState) => ({...prevState, isOpen: !prevState.isOpen}))
           }/>
           <MenuTitleElem>Settings</MenuTitleElem>
-          <P>Theme</P>
           <ThemeManagementContext.Consumer>
             {(context) => (
               <>
                 {
                   Object.keys(themes).map((val, index) => (
-                    <ThemeToggleElem key={index} bgColor={themes[val].values.primaryBg} borderColor={themes[val].values.primary} isActive={(context.activeTheme === val)} onClick={() => context.updateTheme(themes[val])}><span>{val}</span></ThemeToggleElem>
+                    <ThemeToggleElem key={index} bgColor={themes[val].values.primaryBg} borderColor={themes[val].values.primary} isActive={(context.activeTheme === val)} onClick={() => context.updateTheme(themes[val])} aria-label={`${val} theme`}></ThemeToggleElem>
                   ))
                 }
               </>
