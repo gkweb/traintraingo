@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import * as moment from 'moment'
+import moment from 'moment'
 import Disruption from './disruption'
 import PropTypes from 'prop-types'
 

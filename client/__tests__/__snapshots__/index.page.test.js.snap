@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home / Index Snapshot 1`] = `
+<styled.div>
+  <b
+    config={
+      Object {
+        "description": "Train train go",
+        "title": "Train Train Go 🚆🚆🚶 - Train departures without the bloat.",
+      }
+    }
+  />
+  <Styled(styled.main)>
+    <styled.div>
+      <Menu />
+    </styled.div>
+    <styled.div>
+      <styled.div>
+        <WithTheme(Logo) />
+      </styled.div>
+      <styled.div>
+        <Search
+          initialRun={true}
+          onChange={[Function]}
+          onSubmit={[Function]}
+        />
+        <styled.p>
+          Melbourne, Australia PTV train departures with no bloat.
+        </styled.p>
+      </styled.div>
+    </styled.div>
+    <Favourites />
+  </Styled(styled.main)>
+</styled.div>
+`;
+
+exports[`Home / Index Snapshot 2`] = `undefined`;

@@ -22,6 +22,7 @@ class MyApp extends App {
     }
 
     const cookies = parseCookies(ctx)
+
     const activeTheme = cookies.activeTheme || 'light'
 
     return { pageProps, activeTheme }

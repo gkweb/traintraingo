@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Departure Snapshot 1`] = `
+<div
+  className="sc-gqjmRU fCCsEv"
+>
+  <h2
+    className="sc-VigVT eyltje"
+  >
+    00:25
+     to 
+    To City (Flinders Street)
+  </h2>
+  <p
+    className="sc-jTzLTM eDpPBU"
+  >
+    Line: 
+    Test Station
+  </p>
+  <p
+    className="sc-fjdhpX fTmlhl"
+  >
+    -
+  </p>
+  <p
+    className="sc-jzJRlG TlUhV"
+  >
+    Platform: 
+    1
+  </p>
+</div>
+`;
