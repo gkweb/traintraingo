@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 import { ThemeProvider } from 'styled-components'
 import { themes } from './../lib/theme'
-import { create } from 'react-test-renderer'
 import Index from '../pages/index'
 import 'jest-styled-components'
 
