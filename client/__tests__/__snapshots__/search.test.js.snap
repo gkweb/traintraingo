@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search Snapshot 1`] = `
+<styled.form
+  onSubmit={[Function]}
+>
+  <styled.input
+    autoComplete="off"
+    name="search_field"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    type="text"
+  />
+  <Styled(Component) />
+</styled.form>
+`;

@@ -33,5 +33,3 @@ exports[`Home / Index Snapshot 1`] = `
   </Styled(styled.main)>
 </styled.div>
 `;
-
-exports[`Home / Index Snapshot 2`] = `undefined`;

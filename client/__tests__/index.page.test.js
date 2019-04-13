@@ -17,5 +17,5 @@ test('Logo has Theme Context vals passed down to it', () => {
 
 test('Home / Index Snapshot', () => {
   const c = shallow(<Index />, { theme: themes.light.values })
-  expect(expect(c).toMatchSnapshot()).toMatchSnapshot()
+  expect(c).toMatchSnapshot()
 })
