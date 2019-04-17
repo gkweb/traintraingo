@@ -109,32 +109,6 @@ const server = new ApolloServer({
   },
 })
 
-// const handler = (event, context, callback) => {
-//   const handler = server.createHandler({
-//     cors: {
-//       origin: '*',
-//       credentials: true,
-//       allowedHeaders: '*',
-//       headers: true
-//     }
-//   });
-
-//   // Debug
-//   if (config.IS_DEBUG) {
-//     console.log(event)
-//     console.log(context)
-//   }
-
-//   // tell AWS lambda we do not want to wait for NodeJS event loop
-//   // to be empty in order to send the response
-//   context.callbackWaitsForEmptyEventLoop = false
-
-//   // process the request
-//   return handler(event, context, callback)
-// }
-
-// exports.handler = handler
-
 // This `listen` method launches a web-server.  Existing apps
 // can utilize middleware options, which we'll discuss later.
 server.listen().then(({ url }) => {
