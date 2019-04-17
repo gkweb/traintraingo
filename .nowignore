@@ -2,3 +2,4 @@
 .DS_Store
 now-secrets.json
 api/now.json
+client/now.json
