@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 import { ThemeProvider } from 'styled-components'
 import { themes } from './../lib/theme'
-import Index, { STOPS_QUERY } from '../pages/index'
+import Index from '../pages/index'
 import 'jest-styled-components'
 import { MockedProvider } from 'react-apollo/test-utils'
 
