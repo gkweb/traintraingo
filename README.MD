@@ -1,6 +1,6 @@
-## Train train go
+# Train train go
 
-A simplified way to find train departure times in Melbourne, Australia. This is largely a pet project and eperimentation in simplifying user flow.
+A simplified way to find train departure times in Melbourne, Australia.
 
 ## Contributing
 
@@ -19,7 +19,7 @@ Install npm packages in `client` and also `api`.
 
 ### Requirements:
 
-Requires your own PTV dev api key and secret. (https://www.ptv.vic.gov.au/footer/data-and-reporting/datasets/)[https://www.ptv.vic.gov.au/footer/data-and-reporting/datasets/]
+Requires your own PTV dev api key and secret. [https://www.ptv.vic.gov.au/footer/data-and-reporting/datasets/](https://www.ptv.vic.gov.au/footer/data-and-reporting/datasets/)
 
 Once you have this put your env vars in:
 
@@ -57,8 +57,8 @@ Will require you to leave terminal windows open for both api and client.
 
 #### Client:
 
-`npm start:dev`
+`npm run start:dev`
 
 #### API:
 
-`npm start:dev`
+`npm run start:dev`
