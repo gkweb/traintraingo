@@ -12,10 +12,10 @@ const DirectionsAPI = require('./ptv/directions/api')
 const DisruptionsAPI = require('./ptv/disruptions/api')
 
 // Create a logger
-const logExecutions = createGraphQLLogger();
+const logExecutions = createGraphQLLogger()
 
 // Wrap your resolvers
-logExecutions(resolvers);
+logExecutions(resolvers)
 
 const typeDefs = gql`
   type Stop {
@@ -59,7 +59,7 @@ const typeDefs = gql`
     display_on_board: Boolean
     display_status: Boolean
   }
-  
+
   type Departure {
     stop_id: ID!
     route_id: Int
@@ -91,24 +91,23 @@ const typeDefs = gql`
   schema {
     query: Query
   }
-`;
+`
 
-const server = new ApolloServer({ 
-    typeDefs, 
-    resolvers,
-    introspection: true,
-    playground: config.IS_DEBUG,
-    debug: config.IS_DEBUG,
-    dataSources: () => {
-      return {
-        departuresAPI: new DeparturesAPI(),
-        disruptionsAPI: new DisruptionsAPI(),
-        stopsAPI: new StopsAPI(),
-        directionsAPI: new DirectionsAPI()
-      }
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  introspection: true,
+  playground: config.IS_DEBUG,
+  debug: config.IS_DEBUG,
+  dataSources: () => {
+    return {
+      departuresAPI: new DeparturesAPI(),
+      disruptionsAPI: new DisruptionsAPI(),
+      stopsAPI: new StopsAPI(),
+      directionsAPI: new DirectionsAPI(),
     }
- });
-
+  },
+})
 
 // const handler = (event, context, callback) => {
 //   const handler = server.createHandler({
@@ -125,7 +124,6 @@ const server = new ApolloServer({
 //     console.log(event)
 //     console.log(context)
 //   }
-  
 
 //   // tell AWS lambda we do not want to wait for NodeJS event loop
 //   // to be empty in order to send the response
@@ -137,8 +135,8 @@ const server = new ApolloServer({
 
 // exports.handler = handler
 
-  // This `listen` method launches a web-server.  Existing apps
-  // can utilize middleware options, which we'll discuss later.
-  server.listen().then(({ url }) => {
-    console.log(`🚀  Server ready at ${url}`);
-  });
+// This `listen` method launches a web-server.  Existing apps
+// can utilize middleware options, which we'll discuss later.
+server.listen().then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`)
+})

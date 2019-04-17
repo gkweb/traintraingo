@@ -1,4 +1,6 @@
-const env = require('dotenv').config()
+if (process.env.NODE_ENV !== 'production') {
+  const ne = require('now-env')
+} // Ensure now env is loaded locally
 
 module.exports = {
   target: 'serverless',

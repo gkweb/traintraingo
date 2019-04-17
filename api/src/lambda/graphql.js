@@ -12,10 +12,10 @@ const DirectionsAPI = require('./../ptv/directions/api')
 const DisruptionsAPI = require('./../ptv/disruptions/api')
 
 // Create a logger
-const logExecutions = createGraphQLLogger();
+const logExecutions = createGraphQLLogger()
 
 // Wrap your resolvers
-logExecutions(resolvers);
+logExecutions(resolvers)
 
 const typeDefs = gql`
   type Stop {
@@ -83,7 +83,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    stops(search_term: String): [Stop]
+    stops($search_term: String): [Stop]
     stop(stop_id: Int): Stop
     departures(stop_id: Int): [Departure]
   }
@@ -91,30 +91,29 @@ const typeDefs = gql`
   schema {
     query: Query
   }
-`;
+`
 
-const server = new ApolloServer({ 
-    typeDefs, 
-    resolvers,
-    introspection: true,
-    playground: config.IS_DEBUG,
-    debug: config.IS_DEBUG,
-    context: ({ event, context }) => ({
-      headers: event.headers,
-      functionName: context.functionName,
-      event,
-      context,
-    }),
-    dataSources: () => {
-      return {
-        departuresAPI: new DeparturesAPI(),
-        disruptionsAPI: new DisruptionsAPI(),
-        stopsAPI: new StopsAPI(),
-        directionsAPI: new DirectionsAPI()
-      }
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  introspection: true,
+  playground: config.IS_DEBUG,
+  debug: config.IS_DEBUG,
+  context: ({ event, context }) => ({
+    headers: event.headers,
+    functionName: context.functionName,
+    event,
+    context,
+  }),
+  dataSources: () => {
+    return {
+      departuresAPI: new DeparturesAPI(),
+      disruptionsAPI: new DisruptionsAPI(),
+      stopsAPI: new StopsAPI(),
+      directionsAPI: new DirectionsAPI(),
     }
- });
-
+  },
+})
 
 const handler = (event, context, callback) => {
   const handler = server.createHandler({
@@ -122,16 +121,15 @@ const handler = (event, context, callback) => {
       origin: '*',
       credentials: true,
       allowedHeaders: '*',
-      headers: true
-    }
-  });
+      headers: true,
+    },
+  })
 
   // Debug
   if (config.IS_DEBUG) {
     console.log(event)
     console.log(context)
   }
-  
 
   // tell AWS lambda we do not want to wait for NodeJS event loop
   // to be empty in order to send the response

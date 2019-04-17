@@ -34,6 +34,7 @@
     "next-seo": "^1.11.1",
     "node-fetch": "^2.3.0",
     "nookies": "^2.0.4",
+    "now-env": "^3.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.7.0",
     "react-apollo": "^2.5.1",

@@ -5,16 +5,33 @@
     "DEV_ID": "@secret-ptv-dev-id",
     "DEV_KEY": "@secret-ptv-dev-key",
     "API_BASE_URL": "https://timetableapi.ptv.vic.gov.au",
+    "API_URL": "https://traintraingo.com.au/api",
     "IS_DEBUG": "false"
   },
-  "builds": [
-    { "src": "client/package.json", "use": "@now/next" },
-    { "src": "api/src/index.js", "use": "@now/node-server" },
-    { "src": "client/next.config.js", "use": "@now/next" }
+  "builds": [{
+      "src": "client/package.json",
+      "use": "@now/next"
+    },
+    {
+      "src": "api/src/index.js",
+      "use": "@now/node-server"
+    },
+    {
+      "src": "client/next.config.js",
+      "use": "@now/next"
+    }
   ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "/api/src/index.js" },
-    { "src": "/departures/(?<stop_id>[^/]+)$", "dest": "/client/departures?stop_id=$stop_id" },
-    { "src": "/(.*)", "dest": "/client/$1" }
+  "routes": [{
+      "src": "/api/(.*)",
+      "dest": "/api/src/index.js"
+    },
+    {
+      "src": "/departures/(?<stop_id>[^/]+)$",
+      "dest": "/client/departures?stop_id=$stop_id"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/client/$1"
+    }
   ]
 }
