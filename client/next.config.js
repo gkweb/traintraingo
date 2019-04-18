@@ -7,7 +7,7 @@ if (process.env.NODE_ENV !== 'production') {
 let conf = {
   target: 'serverless',
   env: {
-    API_URL: process.env.API_URL || nowConf.env.API_URL,
+    API_URL: process.env.API_URL || 'https://traintraingo.com.au/api',
   },
 }
 
