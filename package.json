@@ -1,0 +1,20 @@
+{
+  "name": "traintraingo-ci",
+  "version": "1.0.0",
+  "description": "A simplified way to find train departure times in Melbourne, Australia.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "npx now --token=$NOW_TOKEN --target production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:gkweb/traintraingo.git"
+  },
+  "author": "gkweb",
+  "license": "ISC",
+  "homepage": "http://traintraingo.com.au",
+  "devDependencies": {
+    "now": "^15.0.5"
+  }
+}
