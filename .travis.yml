@@ -1,14 +1,9 @@
 language: node_js
 node_js:
   - '10'
-install:
-  - cd client && npm i
-  - cd api && npm i
-script:
-  - cd client && npm t
 deploy:
   skip_cleanup: true
   provider: script
-  script: npm run deploy
+  script: NOW_TOKEN=$(NOW_TOKEN) npm run deploy
   on:
     branch: master
