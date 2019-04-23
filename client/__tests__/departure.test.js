@@ -6,7 +6,7 @@ const DepartureNoDisruptionProps = {
   lineName: 'Test Station',
   directionName: 'To City (Flinders Street)',
   platformNumber: 1,
-  scheduledDep: '2019-04-09T14:25:00Z',
+  scheduledDep: '2019-04-23T07:04:51.448Z',
   estimatedDep: null,
   disruptions: [],
 }
