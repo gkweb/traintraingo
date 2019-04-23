@@ -6,6 +6,7 @@ before_install:
 before_script:
   - cd client
   - npm i
+  - npx jest --version
 script: npm t
 deploy:
   skip_cleanup: true
