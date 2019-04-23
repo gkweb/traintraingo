@@ -10,6 +10,8 @@ before_script:
   - npm i
   - npx jest --version
 script: 'npm run test:ci -- --ci'
+before_deploy:
+  - cd ..
 deploy:
   skip_cleanup: true
   provider: script
