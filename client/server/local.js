@@ -11,8 +11,9 @@ app.prepare().then(() => {
   const server = express()
 
   server.get('/departures/:stop_id', (req, res) => {
-    console.log(req.params.stop_id)
-    return app.render(req, res, '/departures', { stop_id: req.params.stop_id })
+    return app.render(req, res, '/departures', {
+      stop_id: parseInt(req.params.stop_id),
+    })
   })
 
   server.get('*', (req, res) => {

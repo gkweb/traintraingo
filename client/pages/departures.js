@@ -34,39 +34,42 @@ const DepartureItemElem = styled.li`
   }
 `
 
-const Stop = props => (
-  <Query
-    query={gql`
-    {
-      stop(stop_id: ${props.stop_id}) {
+const STOP_QUERY = gql`
+  query($stop_id: Int!) {
+    stop(stop_id: $stop_id) {
+      stop_id
+      stop_name
+      departures {
         stop_id
-        stop_name
-        departures {
-          stop_id
-          platform_number
-          route_id
-          direction_id
-          estimated_departure_utc
-          scheduled_departure_utc
-          direction_name
-          disruptions {
-            title
-            description
-            url
-            display_status
-            colour
-          }
+        platform_number
+        route_id
+        direction_id
+        estimated_departure_utc
+        scheduled_departure_utc
+        direction_name
+        disruptions {
+          title
+          description
+          url
+          display_status
+          colour
         }
       }
     }
-    `}
-  >
+  }
+`
+
+const Departures = ({ stop_id }) => (
+  <Query query={STOP_QUERY} variables={{ stop_id }}>
     {({ loading, error, data }) => {
       let v = null
       let stop_name = ''
       if (error) {
         stop_name = 'Error!'
         v = <p>Error, Something happened.</p>
+        {
+          console.log(error)
+        }
       } else if (
         data.stop &&
         data.stop.departures &&
@@ -110,10 +113,9 @@ const Stop = props => (
             <Loading />
           ) : (
             <Main>
-              {data.stop_id}
               <Header
                 headerTitle={stop_name}
-                stopId={error ? null : props.stop_id}
+                stopId={error ? null : stop_id}
                 isLoading={loading}
               />
               {v}
@@ -126,18 +128,9 @@ const Stop = props => (
   </Query>
 )
 
-class Departures extends React.Component {
-  static async getInitialProps({ query }) {
-    return { stop_id: query.stop_id }
-  }
-
-  constructor() {
-    super()
-  }
-
-  render() {
-    return <Stop stop_id={this.props.stop_id} />
-  }
+Departures.getInitialProps = async ({ query }) => {
+  return { stop_id: parseInt(query.stop_id) }
 }
 
 export default Departures
+export { STOP_QUERY }
