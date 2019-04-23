@@ -90,6 +90,9 @@ const Stop = props => (
             })}
           </DepartureUlElem>
         )
+      } else if (loading) {
+        stop_name = 'Loading...'
+        v = <p>Loading...</p>
       } else {
         stop_name = 'No station found.'
         v = <p>Nothing found</p>
