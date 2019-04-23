@@ -3,7 +3,10 @@ node_js:
   - '10'
 before_install:
   - npm i -g now
-script: ./test.sh
+before_script:
+  - cd client
+  - npm i
+script: npm t
 deploy:
   skip_cleanup: true
   provider: script
