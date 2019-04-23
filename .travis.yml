@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - '10'
 before_install:
+  - export TZ=Australia/Canberra
   - npm i -g npm@'>=6.9.0'
   - npm i -g now
 before_script:
