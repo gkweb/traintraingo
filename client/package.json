@@ -12,7 +12,7 @@
     "build": "run-p build:**",
     "build:next": "next build",
     "generate": "next build && next export",
-    "test": "jest && jest --version",
+    "test": "jest --version && jest",
     "test:dev": "majestic"
   },
   "dependencies": {
