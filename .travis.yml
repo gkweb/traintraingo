@@ -7,7 +7,7 @@ before_script:
   - cd client
   - npm i
   - npx jest --version
-script: npm t
+script: 'npm run test:ci -- --ci'
 deploy:
   skip_cleanup: true
   provider: script
