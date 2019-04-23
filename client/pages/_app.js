@@ -4,7 +4,7 @@ import { ApolloProvider } from 'react-apollo'
 import withApolloClient from './../lib/with-apollo-client'
 import { ThemeManagementProvider, ThemeManagementContext } from './../lib/theme'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
-import { parseCookies, setCookie, destroyCookie } from 'nookies'
+import { parseCookies } from 'nookies'
 
 const GlobalStyle = createGlobalStyle`
   * {
