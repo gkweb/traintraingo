@@ -6,3 +6,4 @@ out/*
 .DS_Store
 now-secrets.json
 */now.json
+coverage/
