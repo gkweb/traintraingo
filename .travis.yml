@@ -12,7 +12,6 @@ before_script:
 script: 'npm run test:ci -- --ci'
 before_deploy:
   - cd ..
-  - cat ~/.now/auth.json
   - echo $NOW_TOKEN
 deploy:
   skip_cleanup: false
