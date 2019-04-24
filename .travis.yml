@@ -13,7 +13,7 @@ script: 'npm run test:ci -- --ci'
 before_deploy:
   - cd ..
 deploy:
-  skip_cleanup: true
+  skip_cleanup: false
   provider: script
   script: now --token=$NOW_TOKEN --target production && now alias
   on:
