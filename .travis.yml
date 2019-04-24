@@ -16,6 +16,6 @@ before_deploy:
 deploy:
   skip_cleanup: false
   provider: script
-  script: now --token=$NOW_TOKEN --target production && now alias
+  script: now --token=$NOW_TOKEN --target production && now alias --token=$NOW_TOKEN
   on:
     branch: master
