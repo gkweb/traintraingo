@@ -1,3 +1,5 @@
+![Build status](https://travis-ci.org/gkweb/traintraingo.svg?branch=master 'Build status')
+
 # Train train go
 
 A simplified way to find train departure times in Melbourne, Australia.
