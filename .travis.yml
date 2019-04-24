@@ -12,6 +12,7 @@ before_script:
 script: 'npm run test:ci -- --ci'
 before_deploy:
   - cd ..
+  - cat ~/.now/auth.json
 deploy:
   skip_cleanup: false
   provider: script
