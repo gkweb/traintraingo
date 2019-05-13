@@ -96,7 +96,7 @@ class Disruption extends React.Component {
           <ContentElem>
             <DisruptionListElem>
               {this.props.disruptionData.map((val, index) => (
-                <DisruptionItemElem key={index}>
+                <DisruptionItemElem key={val.sid}>
                   <DisruptionTitleElem>{val.title}</DisruptionTitleElem>
                   <DisruptionDescElem>
                     {val.description}

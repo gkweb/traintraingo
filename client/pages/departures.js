@@ -48,6 +48,7 @@ const STOP_QUERY = gql`
         scheduled_departure_utc
         direction_name
         disruptions {
+          sid
           title
           description
           url
