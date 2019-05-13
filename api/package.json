@@ -23,6 +23,7 @@
     "node-fetch": "^2.3.0",
     "nodemon": "^1.18.10",
     "ptv-api-signature": "^1.0.7",
+    "shortid": "^2.2.14",
     "utf-8-validate": "^5.0.2"
   },
   "devDependencies": {

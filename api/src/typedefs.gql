@@ -26,6 +26,7 @@ type Directions {
 
 type Disruption {
   disruption_id: Int
+  sid: String
   title: String
   url: String
   description: String
