@@ -34,16 +34,14 @@ class MyApp extends App {
       <ThemeManagementProvider activeTheme={activeTheme}>
         <ThemeManagementContext.Consumer>
           {context => (
-            <>
-              <ThemeProvider theme={context.theme.values}>
-                <Container>
-                  <GlobalStyle />
-                  <ApolloProvider client={apolloClient}>
-                    <Component {...pageProps} />
-                  </ApolloProvider>
-                </Container>
-              </ThemeProvider>
-            </>
+            <ThemeProvider theme={context.theme.values}>
+              <Container>
+                <GlobalStyle />
+                <ApolloProvider client={apolloClient}>
+                  <Component {...pageProps} />
+                </ApolloProvider>
+              </Container>
+            </ThemeProvider>
           )}
         </ThemeManagementContext.Consumer>
       </ThemeManagementProvider>
