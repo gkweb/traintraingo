@@ -38,6 +38,7 @@ const MockStation = {
         direction_name: 'City (Flinders Street)',
         disruptions: [
           {
+            sid: 'FcKK908',
             title:
               'Craigieburn, Sunbury, Upfield, Werribee and Williamstown: No City Loop services on Saturday 4 May and Sunday 5 May 2019',
             description:
