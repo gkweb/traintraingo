@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import moment from 'moment'
 import Disruption from './disruption'
+import RouteStops from './route-stops'
 import PropTypes from 'prop-types'
 
 const ContainerElem = styled.div`
@@ -60,6 +61,7 @@ const Departure = ({
         Platform: {platformNumber ? platformNumber : '-'}
       </PlatformElem>
       <Disruption disruptionData={disruptions} />
+      <RouteStops />
     </ContainerElem>
   )
 }

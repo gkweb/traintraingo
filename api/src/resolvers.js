@@ -78,8 +78,6 @@ const resolvers = {
       let tmpDisruption = {}
       // 1 - Stitch up departure data for easy UI consumption
       for (let dep = 0; dep < departures.departures.length; dep++) {
-        console.log('Direction ID:')
-        console.log(departures.departures[dep].direction_id)
         departures.departures[dep].direction_name =
           departures.directions[
             departures.departures[dep].direction_id

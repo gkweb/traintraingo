@@ -53,7 +53,7 @@ const Stops = ({ search_term }) => {
               <StopResultsTitle>Results:</StopResultsTitle>
               {data.stops.map((stop, index) => (
                 <Link
-                  key={index}
+                  key={stop.stop_id}
                   href={`/departures/?stop_id=${stop.stop_id}`}
                   as={`/departures/${stop.stop_id}`}
                   passHref
