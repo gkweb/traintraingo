@@ -60,6 +60,53 @@ const resolvers = {
       const stops = await dataSources.stopsAPI.getStopsBySearchTerm(search_term)
       return stops.stops
     },
+    pattern: async (_, { run_id }, { dataSources }) => {
+      const stoppingPattern = await dataSources.patternsAPI.getStopsByRunId(
+        run_id
+      )
+
+      // 1 - Stitch up departure data for easy UI consumption
+      for (let dep = 0; dep < stoppingPattern.departures.length; dep++) {
+        stoppingPattern.departures[dep].direction_name =
+          stoppingPattern.directions[
+            stoppingPattern.departures[dep].direction_id
+          ].direction_name
+
+        // Suburb
+        stoppingPattern.departures[dep].stop_suburb =
+          stoppingPattern.stops[
+            stoppingPattern.departures[dep].stop_id
+          ].stop_suburb
+
+        // Stop name
+        stoppingPattern.departures[dep].stop_name =
+          stoppingPattern.stops[
+            stoppingPattern.departures[dep].stop_id
+          ].stop_name
+
+        stoppingPattern.departures[dep].disruptions = []
+
+        // Loop over disruptions data
+        for (
+          let dis = 0;
+          dis < stoppingPattern.departures[dep].disruption_ids.length;
+          dis++
+        ) {
+          tmpDisruption = {
+            ...stoppingPattern.disruptions[
+              stoppingPattern.departures[dep].disruption_ids[dis]
+            ],
+            sid: shortid.generate(),
+          }
+
+          stoppingPattern.departures[dep].disruptions.push(tmpDisruption)
+        }
+      }
+
+      console.log(stoppingPattern)
+
+      return stoppingPattern
+    },
     // Query for stop id
     stop: async (_, { stop_id }, { dataSources }) => {
       // Stitch together some sane data

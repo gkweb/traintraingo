@@ -57,6 +57,12 @@ type Departure {
   direction_name: String
 }
 
+type Pattern {
+  departures: [Departure]
+  disruptions: [Disruption]
+  directions: [Direction]
+}
+
 type Departures {
   stop: Stop
   departures: [Departure]
@@ -66,6 +72,7 @@ type Departures {
 type Query {
   stops(search_term: String): [Stop]
   stop(stop_id: Int): Stop
+  pattern(run_id: Int): Pattern
   departures(stop_id: Int): [Departure]
 }
 

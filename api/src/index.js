@@ -19,6 +19,7 @@ const DeparturesAPI = require('./ptv/departures/api')
 const StopsAPI = require('./ptv/stops/api')
 const DirectionsAPI = require('./ptv/directions/api')
 const DisruptionsAPI = require('./ptv/disruptions/api')
+const PatternsAPI = require('./ptv/patterns/api')
 
 // Create a logger
 const logExecutions = createGraphQLLogger()
@@ -38,6 +39,7 @@ const server = new ApolloServer({
       disruptionsAPI: new DisruptionsAPI(),
       stopsAPI: new StopsAPI(),
       directionsAPI: new DirectionsAPI(),
+      patternsAPI: new PatternsAPI(),
     }
   },
 })

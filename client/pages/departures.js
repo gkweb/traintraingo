@@ -12,12 +12,11 @@ import Loading from './../components/loading'
 const DepartureUlElem = styled.ul`
   display: flex;
   flex-flow: row wrap;
-  margin: 4em 0 0;
-  padding: 1em;
+  margin: 0;
+  padding: 0 1em 1em;
   width: 100%;
 
   @media screen and (min-width: 50em) {
-    margin: 6.625em 0 0;
     justify-content: space-between;
     align-items: flex-start;
   }
@@ -41,6 +40,7 @@ const STOP_QUERY = gql`
       stop_name
       departures {
         stop_id
+        run_id
         platform_number
         route_id
         direction_id
@@ -88,6 +88,7 @@ const Departures = ({ stop_id }) => (
                     scheduledDep={departure.scheduled_departure_utc}
                     estimatedDep={departure.estimated_departure_utc}
                     disruptions={departure.disruptions}
+                    runId={departure.run_id}
                   />
                 </DepartureItemElem>
               )

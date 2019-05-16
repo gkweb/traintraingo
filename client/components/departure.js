@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import moment from 'moment'
 import Disruption from './disruption'
 import RouteStops from './route-stops'
+import GoodService from './good-service'
 import PropTypes from 'prop-types'
 
 const ContainerElem = styled.div`
@@ -46,6 +47,7 @@ const Departure = ({
   scheduledDep,
   estimatedDep,
   disruptions,
+  runId,
 }) => {
   const scheduled = moment(scheduledDep).format('HH:mm')
   const estimated = estimatedDep ? moment(estimatedDep).fromNow() : '-' // Estimates into the future are null
@@ -60,8 +62,12 @@ const Departure = ({
       <PlatformElem>
         Platform: {platformNumber ? platformNumber : '-'}
       </PlatformElem>
-      <Disruption disruptionData={disruptions} />
-      <RouteStops />
+      <RouteStops runId={runId} />
+      {disruptions && disruptions.length > 0 ? (
+        <Disruption disruptionData={disruptions} />
+      ) : (
+        <GoodService />
+      )}
     </ContainerElem>
   )
 }
@@ -73,6 +79,7 @@ Departure.propTypes = {
   scheduledDep: PropTypes.string,
   estimatedDep: PropTypes.string,
   disruptions: PropTypes.array,
+  runId: PropTypes.number,
 }
 
 export default Departure

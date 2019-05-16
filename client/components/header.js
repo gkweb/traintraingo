@@ -15,10 +15,6 @@ const HeaderElem = styled.header`
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   background-color: ${props => props.theme.primaryBg};
   margin-bottom: 1em;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 200;
 
   @media screen and (min-width: 50em) {
     height: 6.625em;
