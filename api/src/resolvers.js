@@ -103,8 +103,6 @@ const resolvers = {
         }
       }
 
-      console.log(stoppingPattern)
-
       return stoppingPattern
     },
     // Query for stop id

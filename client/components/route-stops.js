@@ -164,7 +164,10 @@ class RouteStops extends Component {
     return (
       <>
         <H4>
-          Route stops <RefreshBtn onClick={this.handleLoadStops} />
+          Route stops{' '}
+          {!this.state.loadRouteStops ? (
+            <RefreshBtn onClick={this.handleLoadStops} />
+          ) : null}
         </H4>
         {this.props.run_id}
         {this.state.loadRouteStops === true ? (
