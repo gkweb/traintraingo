@@ -48,6 +48,7 @@ const Departure = ({
   estimatedDep,
   disruptions,
   runId,
+  stopId,
 }) => {
   const scheduled = moment(scheduledDep).format('HH:mm')
   const estimated = estimatedDep ? moment(estimatedDep).fromNow() : '-' // Estimates into the future are null
@@ -62,7 +63,7 @@ const Departure = ({
       <PlatformElem>
         Platform: {platformNumber ? platformNumber : '-'}
       </PlatformElem>
-      <RouteStops runId={runId} />
+      <RouteStops runId={runId} stopId={stopId} />
       {disruptions && disruptions.length > 0 ? (
         <Disruption disruptionData={disruptions} />
       ) : (
@@ -80,6 +81,7 @@ Departure.propTypes = {
   estimatedDep: PropTypes.string,
   disruptions: PropTypes.array,
   runId: PropTypes.number,
+  stopId: PropTypes.string,
 }
 
 export default Departure

@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import { H4 } from './text'
 import { RefreshIcon } from './icon'
@@ -39,7 +39,7 @@ const RefreshBtn = ({ onClick }) => (
 )
 
 const TimeItem = styled.li`
-  padding: 0.5em 1em;
+  padding: 0.75em 1em 0.5em;
   position: relative;
   text-align: center;
 
@@ -47,12 +47,13 @@ const TimeItem = styled.li`
     content: ' ';
     display: block;
     position: absolute;
-    top: -0.5em;
-    right: calc(50% - 0.25em);
-    height: 0.5em;
-    width: 0.5em;
+    top: -0.1875em;
+    right: 50%;
+    height: ${props => (props.isCurrentStop ? '1em' : '0.5em')};
+    width: ${props => (props.isCurrentStop ? '1em' : '0.5em')};
     background-color: ${props => props.theme.primary};
     border-radius: 50%;
+    transform: translate(50%, -50%);
   }
 
   &:after {
@@ -98,50 +99,8 @@ const Container = styled.div`
   width: 100%;
   overflow-x: auto;
   margin-bottom: 0.5em;
+  scroll-behavior: smooth;
 `
-
-const times = [
-  {
-    id: '1233CF',
-    time: '10:30am',
-    name: 'Richmond',
-  },
-  {
-    id: '1233FF',
-    time: '11:30am',
-    name: 'Richmond',
-  },
-  {
-    id: '1233FA',
-    time: '12:30pm',
-    name: 'Richmond',
-  },
-  {
-    id: '126233FA',
-    time: '12:30pm',
-    name: 'Richmond',
-  },
-  {
-    id: '12sdf33FA',
-    time: '12:30pm',
-    name: 'Richmond',
-  },
-  {
-    id: '12hh33FA',
-    time: '12:30pm',
-    name: 'Richmond',
-  },
-  {
-    id: '12zzz3FA',
-    time: '12:30pm',
-    name: 'Richmond',
-  },
-  {
-    id: '1233FD',
-    time: '13:30pm',
-    name: 'Richmond',
-  },
-]
 
 class RouteStops extends Component {
   constructor() {
@@ -150,14 +109,22 @@ class RouteStops extends Component {
       loadRouteStops: false,
     }
 
+    // Refs for scrolling
+    this.currentStopRef = React.createRef()
+    this.stopsContainRef = React.createRef()
+
     this.handleLoadStops = this.handleLoadStops.bind(this)
   }
 
   handleLoadStops() {
-    console.log('has clicked')
     this.setState({
       loadRouteStops: true,
     })
+  }
+
+  scrollCurrentStopIntoView() {
+    if (this.currentStopRef)
+      this.stopsContainRef.scrollLeft = this.currentStopRef.offsetLeft
   }
 
   render() {
@@ -174,6 +141,7 @@ class RouteStops extends Component {
           <Query
             query={STOPPING_PATTERN_QUERY}
             variables={{ run_id: this.props.runId }}
+            onCompleted={() => this.scrollCurrentStopIntoView()}
           >
             {({ loading, error, data }) => {
               let r = null
@@ -183,7 +151,7 @@ class RouteStops extends Component {
                   console.log(data)
                 }
                 r = (
-                  <Container>
+                  <Container ref={ref => (this.stopsContainRef = ref)}>
                     <TimeItemContainer>
                       {console.log(data.pattern)}
                       {data.pattern.departures.map((val, index) => {
@@ -194,8 +162,18 @@ class RouteStops extends Component {
                           ? moment(val.estimated_departure_utc).format('HH:mm')
                           : null // Estimates into the future are null
 
+                        const isCurrentStop = val.stop_id === this.props.stopId
+
                         return (
-                          <TimeItem key={index}>
+                          <TimeItem
+                            key={index}
+                            isCurrentStop={isCurrentStop}
+                            ref={
+                              isCurrentStop
+                                ? ref => (this.currentStopRef = ref)
+                                : null
+                            }
+                          >
                             <Time>{estimated ? estimated : scheduled}</Time>
                             <Station>{val.stop_name}</Station>
                           </TimeItem>
