@@ -2,31 +2,68 @@
 
 exports[`Departure Snapshot 1`] = `
 <div
-  className="sc-gqjmRU fCCsEv"
+  className="sc-eNQAEJ cULgMv"
 >
   <h2
-    className="sc-VigVT eyltje"
+    className="sc-hMqMXs JsLXq"
   >
     17:04
      to 
     To City (Flinders Street)
   </h2>
   <p
-    className="sc-jTzLTM eDpPBU"
+    className="sc-kEYyzF ibBlcg"
   >
     Line: 
     Test Station
   </p>
   <p
-    className="sc-fjdhpX fTmlhl"
+    className="sc-kkGfuU faYUca"
   >
     -
   </p>
   <p
-    className="sc-jzJRlG TlUhV"
+    className="sc-iAyFgw frUfXH"
   >
     Platform: 
     1
   </p>
+  <h4
+    className="sc-fjdhpX jqwCfx"
+  >
+    Route stops
+     
+    <button
+      aria-label="Load route departures"
+      className="sc-cSHVUG hMyVEn"
+      onClick={[Function]}
+    >
+      <svg
+        className="sc-bdVaJa idokzw"
+        viewBox="0 0 32 32"
+      >
+        <path
+          d="M32 12h-12l4.485-4.485c-2.267-2.266-5.28-3.515-8.485-3.515s-6.219 1.248-8.485 3.515c-2.266 2.267-3.515 5.28-3.515 8.485s1.248 6.219 3.515 8.485c2.267 2.266 5.28 3.515 8.485 3.515s6.219-1.248 8.485-3.515c0.189-0.189 0.371-0.384 0.546-0.583l3.010 2.634c-2.933 3.349-7.239 5.464-12.041 5.464-8.837 0-16-7.163-16-16s7.163-16 16-16c4.418 0 8.418 1.791 11.313 4.687l4.687-4.687v12z"
+        />
+      </svg>
+    </button>
+  </h4>
+  <div
+    className="sc-dxgOiQ ljKXFS"
+  >
+    <svg
+      className="sc-ckVGcZ lnjgKk sc-bdVaJa idokzw"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M9.984 17.016l9-9-1.406-1.453-7.594 7.594-3.563-3.563-1.406 1.406zM12 2.016c5.531 0 9.984 4.453 9.984 9.984s-4.453 9.984-9.984 9.984-9.984-4.453-9.984-9.984 4.453-9.984 9.984-9.984z"
+      />
+    </svg>
+    <span
+      className="sc-jKJlTe loXQau"
+    >
+      Good Service
+    </span>
+  </div>
 </div>
 `;

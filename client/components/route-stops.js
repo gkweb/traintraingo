@@ -136,7 +136,6 @@ class RouteStops extends Component {
             <RefreshBtn onClick={this.handleLoadStops} />
           ) : null}
         </H4>
-        {this.props.run_id}
         {this.state.loadRouteStops === true ? (
           <Query
             query={STOPPING_PATTERN_QUERY}
@@ -145,15 +144,11 @@ class RouteStops extends Component {
           >
             {({ loading, error, data }) => {
               let r = null
-              if (loading) return <span>Loading...</span>
+              if (loading || !data) return <span>Loading...</span>
               if (data) {
-                {
-                  console.log(data)
-                }
                 r = (
                   <Container ref={ref => (this.stopsContainRef = ref)}>
                     <TimeItemContainer>
-                      {console.log(data.pattern)}
                       {data.pattern.departures.map((val, index) => {
                         const scheduled = moment(
                           val.scheduled_departure_utc
@@ -214,4 +209,5 @@ const STOPPING_PATTERN_QUERY = gql`
   }
 `
 
+export { STOPPING_PATTERN_QUERY }
 export default RouteStops

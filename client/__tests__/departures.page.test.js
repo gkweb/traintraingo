@@ -3,6 +3,7 @@ import { shallow, mount } from 'enzyme'
 import { ThemeProvider } from 'styled-components'
 import { themes } from './../lib/theme'
 import Departures, { STOP_QUERY } from '../pages/departures'
+import { STOPPING_PATTERN_QUERY } from '../components/route-stops'
 import 'jest-styled-components'
 import { MockedProvider } from 'react-apollo/test-utils'
 import renderer from 'react-test-renderer'
@@ -30,6 +31,7 @@ const MockStation = {
     departures: [
       {
         stop_id: '1108',
+        run_id: '12345',
         platform_number: 1,
         route_id: 3,
         direction_id: 1,
@@ -53,6 +55,7 @@ const MockStation = {
       {
         stop_id: '1108',
         platform_number: 2,
+        run_id: '12346',
         route_id: 3,
         direction_id: 2,
         estimated_departure_utc: '2019-04-23T09:20:00Z',

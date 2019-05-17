@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Run stopping pattern Snapshot 1`] = `
+<Fragment>
+  <styled.h4>
+    Route stops
+     
+    <RefreshBtn
+      onClick={[Function]}
+    />
+  </styled.h4>
+</Fragment>
+`;

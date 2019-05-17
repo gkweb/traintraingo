@@ -88,7 +88,7 @@ const Departures = ({ stop_id }) => (
                     scheduledDep={departure.scheduled_departure_utc}
                     estimatedDep={departure.estimated_departure_utc}
                     disruptions={departure.disruptions}
-                    runId={departure.run_id}
+                    runId={parseInt(departure.run_id)}
                     stopId={departure.stop_id}
                   />
                 </DepartureItemElem>

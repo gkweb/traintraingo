@@ -51,7 +51,7 @@
     "enzyme-adapter-react-16": "^1.12.1",
     "enzyme-to-json": "^3.3.5",
     "express": "^4.16.4",
-    "jest": "^24.7.1",
+    "jest": "^24.8.0",
     "majestic": "^1.4.0",
     "next": "^8.0.3",
     "now-env": "^3.1.0",
