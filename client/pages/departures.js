@@ -55,6 +55,11 @@ const STOP_QUERY = gql`
           display_status
           colour
         }
+        run {
+          run_id
+          express_stop_count
+          destination_name
+        }
       }
     }
   }
@@ -90,6 +95,8 @@ const Departures = ({ stop_id }) => (
                     disruptions={departure.disruptions}
                     runId={parseInt(departure.run_id)}
                     stopId={departure.stop_id}
+                    expressStopCount={departure.run.express_stop_count}
+                    destinationName={departure.run.destination_name}
                   />
                 </DepartureItemElem>
               )

@@ -121,12 +121,25 @@ const resolvers = {
       stop.directions = extractDirectionsFromDepartures(departures) || []
 
       let tmpDisruption = {}
+
       // 1 - Stitch up departure data for easy UI consumption
       for (let dep = 0; dep < departures.departures.length; dep++) {
         departures.departures[dep].direction_name =
           departures.directions[
             departures.departures[dep].direction_id
           ].direction_name
+
+        console.log(departures.departures[dep].run)
+
+        // Run data
+        departures.departures[dep].run = (() =>
+          departures.runs[departures.departures[dep].run_id])() // Immutable
+
+        // departures.departures[dep].run =
+        //   departures.runs[departures.departures[dep].run_id]
+
+        console.log(departures.departures[dep].run)
+
         departures.departures[dep].disruptions = []
 
         // Loop over disruptions data

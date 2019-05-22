@@ -55,12 +55,25 @@ type Departure {
   estimated_departure_utc: String
   platform_number: Int
   direction_name: String
+  run: Run
 }
 
 type Pattern {
   departures: [Departure]
   disruptions: [Disruption]
   directions: [Direction]
+}
+
+type Run {
+  run_id: Int
+  route_id: Int
+  route_type: Int
+  final_stop_id: Int
+  destination_name: String
+  status: String
+  direction_id: Int
+  run_sequence: Int
+  express_stop_count: Int
 }
 
 type Departures {

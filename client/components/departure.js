@@ -15,11 +15,20 @@ const ContainerElem = styled.div`
 `
 
 const TitleElem = styled.h2`
-  margin: 0 0 0.75em;
+  margin: 0 0 0.25em;
 `
 
 const InfoElem = styled.p`
+  margin: 0 0 1em;
+
+  &:not(:last-child) {
+    margin: 0 0 1em;
+  }
+`
+
+const StopPattern = styled.p`
   margin: 0;
+  font-size: 0.75em;
 
   &:not(:last-child) {
     margin: 0 0 1em;
@@ -40,6 +49,26 @@ const PlatformElem = styled.p`
   }
 `
 
+const ExpressTextElem = ({ count, destinationName }) => {
+  let txt = ''
+
+  if (count > 0 && count < 3) {
+    txt = `Ltd express to ${destinationName}`
+  } else if (count > 3) {
+    txt = `Express to ${destinationName}`
+  } else {
+    txt = `All stations to ${destinationName}`
+  }
+
+  return <StopPattern>{txt}</StopPattern>
+}
+
+// const ScheduledTimeElem = styled.span`
+//   display: block;
+//   padding: .25em .5em;
+//   background: ${props => props.theme}
+// `
+
 const Departure = ({
   lineName,
   directionName,
@@ -49,15 +78,21 @@ const Departure = ({
   disruptions,
   runId,
   stopId,
+  expressStopCount,
+  destinationName,
 }) => {
   const scheduled = moment(scheduledDep).format('HH:mm')
-  const estimated = estimatedDep ? moment(estimatedDep).fromNow() : '-' // Estimates into the future are null
+  const estimated = estimatedDep ? moment(estimatedDep).fromNow(true) : '-' // Estimates into the future are null
 
   return (
     <ContainerElem>
       <TitleElem>
-        {scheduled} to {directionName}
+        {scheduled} to {directionName}{' '}
       </TitleElem>
+      <ExpressTextElem
+        count={expressStopCount}
+        destinationName={destinationName}
+      />
       {lineName ? <InfoElem>Line: {lineName}</InfoElem> : null}
       <DepartingTimeElem>{estimated}</DepartingTimeElem>
       <PlatformElem>
@@ -82,6 +117,8 @@ Departure.propTypes = {
   disruptions: PropTypes.array,
   runId: PropTypes.number,
   stopId: PropTypes.string,
+  expressStopCount: PropTypes.number,
+  destinationName: PropTypes.string,
 }
 
 export default Departure

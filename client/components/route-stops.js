@@ -43,7 +43,7 @@ const TimeItem = styled.li`
   position: relative;
   text-align: center;
 
-  &:before {
+  &:after {
     content: ' ';
     display: block;
     position: absolute;
@@ -51,12 +51,25 @@ const TimeItem = styled.li`
     right: 50%;
     height: ${props => (props.isCurrentStop ? '1em' : '0.5em')};
     width: ${props => (props.isCurrentStop ? '1em' : '0.5em')};
-    background-color: ${props => props.theme.primary};
+    background: ${props =>
+      props.isCurrentStop
+        ? `${props.theme.primary}`
+        : `
+      radial-gradient(
+        circle at center,
+        ${props.theme.inversePrimaryBg},
+        ${props.theme.inversePrimaryBg} 50%,
+        ${props.theme.primary} 50.001%,
+        ${props.theme.primary} calc(50% + 2px),
+        ${props.theme.inversePrimaryBg} calc(50% + 3px)
+      );
+    `}
+    background-size: 100%;
     border-radius: 50%;
     transform: translate(50%, -50%);
   }
 
-  &:after {
+  &:before {
     content: ' ';
     display: block;
     height: 0.125em;
@@ -67,11 +80,11 @@ const TimeItem = styled.li`
     background-color: ${props => props.theme.primary};
   }
 
-  &:first-child:after {
+  &:first-child:before {
     left: 50%;
   }
 
-  &:last-child:after {
+  &:last-child:before {
     right: 50%;
   }
 `
