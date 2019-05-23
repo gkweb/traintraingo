@@ -93,7 +93,7 @@ const ScheduledTimeElem = styled.span`
   text-align: center;
 
   @media screen and (min-width: 60em) {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 `
 
