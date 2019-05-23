@@ -51,6 +51,11 @@ const MockStation = {
             colour: '#ffd500',
           },
         ],
+        run: {
+          run_id: 12345,
+          express_stop_count: 1,
+          destination_name: 'Laverton',
+        },
       },
       {
         stop_id: '1108',
@@ -62,6 +67,11 @@ const MockStation = {
         scheduled_departure_utc: '2019-04-23T09:20:00Z',
         direction_name: 'Craigieburn',
         disruptions: [],
+        run: {
+          run_id: 12346,
+          express_stop_count: 0,
+          destination_name: 'Craigieburn',
+        },
       },
     ],
   },

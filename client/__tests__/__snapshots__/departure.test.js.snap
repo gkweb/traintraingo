@@ -5,25 +5,35 @@ exports[`Departure Snapshot 1`] = `
   className="sc-eNQAEJ cULgMv"
 >
   <h2
-    className="sc-hMqMXs JsLXq"
+    className="sc-hMqMXs iFosxJ"
   >
     17:04
      to 
     To City (Flinders Street)
+     
   </h2>
   <p
-    className="sc-kEYyzF ibBlcg"
+    className="sc-kkGfuU dhVVGq"
+  >
+    All stations to undefined
+  </p>
+  <p
+    className="sc-kEYyzF fyAzVX"
   >
     Line: 
     Test Station
   </p>
   <p
-    className="sc-kkGfuU faYUca"
+    className="sc-iAyFgw dEDUAF"
   >
-    -
+    <span
+      className="sc-eHgmQL bYNcJz"
+    >
+      --
+    </span>
   </p>
   <p
-    className="sc-iAyFgw frUfXH"
+    className="sc-hSdWYo fGjFZK"
   >
     Platform: 
     1
