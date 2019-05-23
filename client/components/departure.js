@@ -82,33 +82,18 @@ const ExpressTextElem = ({ count, destinationName }) => {
   return <StopPattern>{txt}</StopPattern>
 }
 
-// Works out txt for fromNow
-const estimatedTimeTxt = txt => {
-  const isLessThanMin = /sec/gi
-  // The updated txt
-  let uTxt = ''
-
-  if (isLessThanMin.test(txt)) {
-    uTxt = 'Now'
-  } else {
-    uTxt = txt
-    uTxt.replace('minutes', 'mins')
-    uTxt.replace('a minute', '1 min')
-
-    console.log(uTxt)
-  }
-
-  return uTxt
-}
-
 const ScheduledTimeElem = styled.span`
   display: inline-block;
-  padding: 1.25em 1em;
+  padding: 0.75em;
   background: ${props => props.theme.primary};
   color: ${props => props.theme.primaryBg};
   border: 0.0625em solid ${props => props.theme[props.colorName]};
   border-right: 0.5em solid ${props => props.theme[props.colorName]};
-  font-size: 2rem;
+  font-size: 1.25rem;
+
+  @media screen and (min-width: 50em) {
+    font-size: 2rem;
+  }
 `
 
 const ScheduledTime = ({ time }) => {
