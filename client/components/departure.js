@@ -1,9 +1,29 @@
 import styled from 'styled-components'
 import moment from 'moment'
+import { DateTime, toRelative } from 'luxon'
 import Disruption from './disruption'
 import RouteStops from './route-stops'
 import GoodService from './good-service'
 import PropTypes from 'prop-types'
+
+moment.updateLocale('en', {
+  relativeTime: {
+    future: 'in %s',
+    past: '%s ago',
+    s: 'now',
+    ss: 'now',
+    m: '1 min',
+    mm: '%d mins',
+    h: '1 hr',
+    hh: '%d hr',
+    d: 'a day',
+    dd: '%d days',
+    M: 'a month',
+    MM: '%d months',
+    y: 'a year',
+    yy: '%d years',
+  },
+})
 
 const ContainerElem = styled.div`
   padding: 1.5em 1em 1em;
@@ -63,11 +83,50 @@ const ExpressTextElem = ({ count, destinationName }) => {
   return <StopPattern>{txt}</StopPattern>
 }
 
-// const ScheduledTimeElem = styled.span`
-//   display: block;
-//   padding: .25em .5em;
-//   background: ${props => props.theme}
-// `
+// Works out txt for fromNow
+const estimatedTimeTxt = txt => {
+  const isLessThanMin = /sec/gi
+  // The updated txt
+  let uTxt = ''
+
+  if (isLessThanMin.test(txt)) {
+    uTxt = 'Now'
+  } else {
+    uTxt = txt
+    uTxt.replace('minutes', 'mins')
+    uTxt.replace('a minute', '1 min')
+
+    console.log(uTxt)
+  }
+
+  return uTxt
+}
+
+const ScheduledTimeElem = styled.span`
+  display: inline-block;
+  padding: 1.25em 1em;
+  background: ${props => props.theme.primary};
+  color: ${props => props.theme.primaryBg};
+  border: 0.0625em solid ${props => props.theme[props.colorName]};
+  border-right: 0.5em solid ${props => props.theme[props.colorName]};
+  font-size: 2rem;
+`
+
+const ScheduledTime = ({ time }) => {
+  let colorName = ''
+
+  if (time === 'now') {
+    colorName = 'highlightSecondary' // Orange
+  } else if (/^(1\smin)/gi.test(time)) {
+    colorName = 'highlightPrimary' // Yellow
+  } else if (time === '--') {
+    colorName = 'primary'
+  } else {
+    colorName = 'highlightTertiary'
+  }
+
+  return <ScheduledTimeElem colorName={colorName}>{time}</ScheduledTimeElem>
+}
 
 const Departure = ({
   lineName,
@@ -82,7 +141,7 @@ const Departure = ({
   destinationName,
 }) => {
   const scheduled = moment(scheduledDep).format('HH:mm')
-  const estimated = estimatedDep ? moment(estimatedDep).fromNow(true) : '-' // Estimates into the future are null
+  const estimated = estimatedDep ? moment(estimatedDep).fromNow(true) : '--' // Estimates into the future are null
 
   return (
     <ContainerElem>
@@ -94,7 +153,9 @@ const Departure = ({
         destinationName={destinationName}
       />
       {lineName ? <InfoElem>Line: {lineName}</InfoElem> : null}
-      <DepartingTimeElem>{estimated}</DepartingTimeElem>
+      <DepartingTimeElem>
+        <ScheduledTime time={estimated} />
+      </DepartingTimeElem>
       <PlatformElem>
         Platform: {platformNumber ? platformNumber : '-'}
       </PlatformElem>
