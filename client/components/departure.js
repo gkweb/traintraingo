@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import moment from 'moment'
-import { DateTime, toRelative } from 'luxon'
 import Disruption from './disruption'
 import RouteStops from './route-stops'
 import GoodService from './good-service'
