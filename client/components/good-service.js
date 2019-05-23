@@ -19,7 +19,7 @@ const TextBlock = styled.span``
 
 const GoodService = () => (
   <Container>
-    <Icon />
+    <Icon noDimensions={true} />
     <TextBlock>Good Service</TextBlock>
   </Container>
 )

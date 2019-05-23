@@ -2,8 +2,10 @@ import styled from 'styled-components'
 
 const IconElem = styled.svg`
   display: block;
-  width: 100%;
-  height: auto;
+  ${props =>
+    props.noDimensions && props.noDimensions === true
+      ? null
+      : 'width: 100%;height: auto;'}
   fill: currentColor;
   stroke: currentColor;
   max-width: 3em;
@@ -59,7 +61,7 @@ const RefreshIcon = props => (
 )
 
 const TickIcon = props => (
-  <IconElem viewBox="0 0 24 24" className={props.className} style={props.style}>
+  <IconElem viewBox="0 0 24 24" {...props}>
     <path d="M9.984 17.016l9-9-1.406-1.453-7.594 7.594-3.563-3.563-1.406 1.406zM12 2.016c5.531 0 9.984 4.453 9.984 9.984s-4.453 9.984-9.984 9.984-9.984-4.453-9.984-9.984 4.453-9.984 9.984-9.984z" />
   </IconElem>
 )
