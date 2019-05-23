@@ -103,6 +103,12 @@ const PlatformTimeContainerElem = styled.div`
   justify-content: space-between;
 `
 
+const TitleBlockContainerElem = styled.div`
+  @media screen and (max-width: 60em) {
+    width: calc(100% - 8em);
+  }
+`
+
 const ScheduledTime = ({ time }) => {
   let colorName = ''
 
@@ -137,7 +143,7 @@ const Departure = ({
   return (
     <ContainerElem>
       <PlatformTimeContainerElem>
-        <div>
+        <TitleBlockContainerElem>
           <TitleElem>
             {scheduled} to {directionName}{' '}
           </TitleElem>
@@ -149,7 +155,7 @@ const Departure = ({
           <PlatformElem>
             Platform: {platformNumber ? platformNumber : '-'}
           </PlatformElem>
-        </div>
+        </TitleBlockContainerElem>
         <DepartingTimeElem>
           <ScheduledTime time={estimated} />
         </DepartingTimeElem>
