@@ -90,10 +90,17 @@ const ScheduledTimeElem = styled.span`
   border: 0.0625em solid ${props => props.theme[props.colorName]};
   border-right: 0.5em solid ${props => props.theme[props.colorName]};
   font-size: 1.25rem;
+  text-align: center;
 
-  @media screen and (min-width: 50em) {
+  @media screen and (min-width: 60em) {
     font-size: 2rem;
   }
+`
+
+const PlatformTimeContainerElem = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
 `
 
 const ScheduledTime = ({ time }) => {
@@ -129,20 +136,24 @@ const Departure = ({
 
   return (
     <ContainerElem>
-      <TitleElem>
-        {scheduled} to {directionName}{' '}
-      </TitleElem>
-      <ExpressTextElem
-        count={expressStopCount}
-        destinationName={destinationName}
-      />
-      {lineName ? <InfoElem>Line: {lineName}</InfoElem> : null}
-      <DepartingTimeElem>
-        <ScheduledTime time={estimated} />
-      </DepartingTimeElem>
-      <PlatformElem>
-        Platform: {platformNumber ? platformNumber : '-'}
-      </PlatformElem>
+      <PlatformTimeContainerElem>
+        <div>
+          <TitleElem>
+            {scheduled} to {directionName}{' '}
+          </TitleElem>
+          <ExpressTextElem
+            count={expressStopCount}
+            destinationName={destinationName}
+          />
+          {lineName ? <InfoElem>Line: {lineName}</InfoElem> : null}
+          <PlatformElem>
+            Platform: {platformNumber ? platformNumber : '-'}
+          </PlatformElem>
+        </div>
+        <DepartingTimeElem>
+          <ScheduledTime time={estimated} />
+        </DepartingTimeElem>
+      </PlatformTimeContainerElem>
       <RouteStops runId={runId} stopId={stopId} />
       {disruptions && disruptions.length > 0 ? (
         <Disruption disruptionData={disruptions} />
