@@ -31,7 +31,7 @@
     "isomorphic-unfetch": "^3.0.0",
     "jest-styled-components": "^6.3.1",
     "lodash": "^4.17.11",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "next-seo": "^1.11.1",
     "node-fetch": "^2.3.0",
     "nookies": "^2.0.4",
