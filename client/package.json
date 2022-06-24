@@ -33,7 +33,7 @@
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "next-seo": "^1.11.1",
-    "node-fetch": "^2.3.0",
+    "node-fetch": "^2.6.7",
     "nookies": "^2.0.4",
     "prop-types": "^15.7.2",
     "react": "^16.7.0",
